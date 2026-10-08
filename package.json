@@ -1,0 +1,31 @@
+{
+  "name": "cerebro-digital",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "autoprefixer": "^10.6.1",
+    "gsap": "^3.15.0",
+    "postcss": "^8.5.29",
+    "react-icons": "^5.7.0",
+    "tailwindcss": "^3.4.14",
+    "three": "^0.186.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^1.53.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}
