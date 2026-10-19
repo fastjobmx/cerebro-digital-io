@@ -31,6 +31,7 @@ export function LenisSmoothScroll({ children }: LenisSmoothScrollProps) {
     })
 
     lenisRef.current = lenis
+    if (import.meta.env.DEV) (window as unknown as { __lenis: Lenis }).__lenis = lenis
 
     // Connect Lenis → GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update as unknown as (e: unknown) => void)

@@ -4,21 +4,10 @@
   "description": "Inteligencia que automatiza. Un cerebro digital para su negocio.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#070014",
-  "theme_color": "#7B2CFF",
-  "orientation": "portrait-primary",
+  "background_color": "#05010D",
+  "theme_color": "#05010D",
   "icons": [
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/apple-touch-icon.svg",
-      "sizes": "180x180",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
   ]
 }

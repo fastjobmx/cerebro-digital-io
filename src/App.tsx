@@ -1,153 +1,80 @@
-import { useEffect, useState } from 'react'
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
-import { CustomCursor } from './components/CustomCursor'
-import { Preloader } from './components/sections/Preloader'
-import { Reveal } from './components/Motion'
+import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Cursor } from './components/fx'
+import { Preloader } from './sections/Preloader'
+import { Header } from './sections/Header'
+import { Hero } from './sections/Hero'
+import { Problem } from './sections/Problem'
+import { Connect } from './sections/Connect'
+import { Verbs } from './sections/Verbs'
+import { Areas } from './sections/Areas'
+import { Control } from './sections/Control'
+import { Difference, Cases } from './sections/Difference'
+import { Process, Results } from './sections/Process'
+import { FinalCTA, Contact, Footer } from './sections/Closing'
+import { ChatWidget } from './chat/ChatWidget'
 
-import { Hero } from './components/sections/Hero'
-import { MicroMessage } from './components/sections/MicroMessage'
-import { Problem } from './components/sections/Problem'
-import { WhatIsBrain } from './components/sections/WhatIsBrain'
-import { ScrollNarrative } from './components/sections/ScrollNarrative'
-import { BrainModel } from './components/sections/BrainModel'
-import { FiveAreas } from './components/sections/FiveAreas'
-import { PhoneSection } from './components/sections/PhoneSection'
-import { NotChatbot } from './components/sections/NotChatbot'
-import { Ecosystem } from './components/sections/Ecosystem'
-import { MarketingAI } from './components/sections/MarketingAI'
-import { StopPieces } from './components/sections/StopPieces'
-import { UseCases } from './components/sections/UseCases'
-import { Workflow } from './components/sections/Workflow'
-import { HumanControl } from './components/sections/HumanControl'
-import { Results } from './components/sections/Results'
-import { Timeline } from './components/sections/Timeline'
-import { Receive } from './components/sections/Receive'
-import { Audience } from './components/sections/Audience'
-import { Demo } from './components/sections/Demo'
-import { BrandStatement } from './components/sections/BrandStatement'
-import { FinalCTA } from './components/sections/FinalCTA'
+// La escena 3D (three.js) se carga en un chunk aparte para pintar el contenido antes
+const NeuralScene = lazy(() => import('./three/NeuralScene').then((m) => ({ default: m.NeuralScene })))
+
+function shouldPreload() {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+    if (sessionStorage.getItem('cdio-visited')) return false
+    sessionStorage.setItem('cdio-visited', '1')
+  } catch {
+    /* almacenamiento no disponible */
+  }
+  return true
+}
 
 export default function App() {
-  const [loading, setLoading] = useState<boolean>(() => {
-    // Reduce preloader likelihood on revisit / reduced motion.
-    if (typeof window === 'undefined') return true
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced) return false
-    const revisited = sessionStorage.getItem('cdio-visited')
-    if (revisited) return false
-    sessionStorage.setItem('cdio-visited', '1')
-    return true
-  })
+  const [loading, setLoading] = useState(shouldPreload)
+  const done = useCallback(() => setLoading(false), [])
 
   useEffect(() => {
-    if (loading) {
-      document.documentElement.classList.add('is-loading')
-    } else {
-      document.documentElement.classList.remove('is-loading')
-    }
+    document.documentElement.classList.toggle('is-loading', loading)
+    if (!loading) requestAnimationFrame(() => ScrollTrigger.refresh())
   }, [loading])
 
+  useEffect(() => {
+    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+  }, [])
+
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-deep-space text-white">
-      {loading && <Preloader onDone={() => setLoading(false)} />}
-
-      {/* Global noise overlay */}
-      <div className="noise-overlay" aria-hidden="true" />
-
-      {/* Subtle custom cursor (desktop only) */}
-      <CustomCursor />
-
+    <>
+      {loading && <Preloader onDone={done} />}
+      <Suspense fallback={null}>
+        <NeuralScene />
+      </Suspense>
+      {/* Viñeta y atmósfera sobre la escena 3D */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(ellipse_at_50%_45%,transparent_40%,rgba(5,1,13,.75)_100%)]"
+      />
+      <div aria-hidden="true" className="grain" />
+      <Cursor />
       <Header />
 
-      <main className="relative">
-        <Hero />
-
-        <Reveal from="blur" duration={1.1}>
-          <MicroMessage />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Problem />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <WhatIsBrain />
-        </Reveal>
-
-        {/* Cinematic scroll story — Caos → Crecimiento */}
-        <ScrollNarrative />
-
-        <Reveal from="bottom" distance={60}>
-          <BrainModel />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <FiveAreas />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <PhoneSection />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <NotChatbot />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Ecosystem />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <MarketingAI />
-        </Reveal>
-
-        <Reveal from="blur" duration={1}>
-          <StopPieces />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <UseCases />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Workflow />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <HumanControl />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Results />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Timeline />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Receive />
-        </Reveal>
-
-        <Reveal from="bottom" distance={60}>
-          <Audience />
-        </Reveal>
-
-        <Reveal from="blur" duration={1}>
-          <Demo />
-        </Reveal>
-
-        <Reveal from="blur" duration={1}>
-          <BrandStatement />
-        </Reveal>
-
-        <Reveal from="scale" distance={0} duration={1}>
-          <FinalCTA />
-        </Reveal>
+      <main className="relative z-10">
+        <Hero ready={!loading} />
+        <Problem />
+        <Connect />
+        <Verbs />
+        <Areas />
+        <Control />
+        <Difference />
+        <Cases />
+        <Process />
+        <Results />
+        <FinalCTA />
+        <Contact />
       </main>
+      <div className="relative z-10">
+        <Footer />
+      </div>
 
-      <Footer />
-    </div>
+      <ChatWidget />
+    </>
   )
 }

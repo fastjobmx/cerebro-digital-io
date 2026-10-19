@@ -1,58 +1,62 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
+        // Paleta extraída del logo CEREBRO DIGITAL IO
+        ink: {
+          DEFAULT: '#05010D',
+          2: '#0A0418',
+          3: '#120A26',
+          4: '#1B1236',
+        },
+        magenta: '#F03CFF',
+        violet: '#8B5CF6',
+        indigo: '#5B5BFF',
+        electric: '#3B82F6',
+        cyan: '#3DD9FF',
+        chrome: '#E9E6FF',
+        // Alias heredados
         'ultra-violet': '#7B2CFF',
         'electric-purple': '#A855F7',
-        'neon-magenta': '#E600FF',
-        'electric-cyan': '#00E5FF',
-        'deep-space': '#070014',
-        'deep-space-2': '#0B0020',
-        'deep-space-3': '#110030',
+        'neon-magenta': '#F03CFF',
+        'electric-cyan': '#3DD9FF',
+        'deep-space': '#05010D',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['Sora', 'Inter', 'sans-serif'],
+        brand: ['Michroma', 'Sora', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(135deg, #7B2CFF 0%, #E600FF 50%, #00E5FF 100%)',
-        'gradient-brain': 'linear-gradient(90deg, #7B2CFF 0%, #E600FF 50%, #00E5FF 100%)',
-        'gradient-violet-cyan': 'linear-gradient(135deg, #7B2CFF 0%, #00E5FF 100%)',
-        'gradient-magenta-purple': 'linear-gradient(135deg, #E600FF 0%, #7B2CFF 100%)',
-        'radial-glow': 'radial-gradient(circle at center, rgba(123,44,255,0.25) 0%, rgba(230,0,255,0.1) 40%, transparent 70%)',
+        'gradient-brand': 'linear-gradient(100deg, #F03CFF 0%, #8B5CF6 38%, #3B82F6 72%, #3DD9FF 100%)',
+        'gradient-mv': 'linear-gradient(135deg, #F03CFF 0%, #8B5CF6 100%)',
+        'gradient-vc': 'linear-gradient(135deg, #8B5CF6 0%, #3DD9FF 100%)',
       },
       boxShadow: {
-        'glow-violet': '0 0 60px rgba(123,44,255,0.4)',
-        'glow-magenta': '0 0 60px rgba(230,0,255,0.4)',
-        'glow-cyan': '0 0 60px rgba(0,229,255,0.4)',
-        'glow-brand': '0 0 80px rgba(168,85,247,0.5)',
+        'glow-m': '0 0 40px -6px rgba(240,60,255,.55)',
+        'glow-v': '0 0 40px -6px rgba(139,92,246,.55)',
+        'glow-c': '0 0 40px -6px rgba(61,217,255,.5)',
       },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
-        'shimmer': 'shimmer 3s linear infinite',
-        'scan': 'scan 4s linear infinite',
+      transitionTimingFunction: {
+        expo: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+        'spin-slow': { to: { transform: 'rotate(360deg)' } },
+        pulseDot: {
+          '0%,100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(.6)', opacity: '.5' },
         },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
-        },
-        scan: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
+        shine: { from: { backgroundPosition: '200% 0' }, to: { backgroundPosition: '-200% 0' } },
+      },
+      animation: {
+        marquee: 'marquee 40s linear infinite',
+        'spin-slow': 'spin-slow 24s linear infinite',
+        'pulse-dot': 'pulseDot 1.6s ease-in-out infinite',
+        shine: 'shine 6s linear infinite',
       },
     },
   },
