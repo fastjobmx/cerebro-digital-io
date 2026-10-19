@@ -1,5 +1,6 @@
 // Motor conversacional local: NLU ligera (sin dependencias) + captura de leads.
 // Funciona 100 % en el navegador; el modo IA (ai.ts) lo usa como respaldo.
+import { sendLead } from '../lib/leads'
 import { SITE } from '../config/site'
 import { DEFAULT_REPLIES, FALLBACK_SUGGESTIONS, INTENTS, INTENT_BY_ID, type Intent } from './knowledge'
 
@@ -297,6 +298,8 @@ function summary(d: Partial<LeadData>): string {
     `- **WhatsApp:** ${d.whatsapp ? clean(d.whatsapp) : 'No indicado'}`,
     `- **Proceso:** ${clean(d.proceso ?? '')}`,
     '',
+    'Al elegir «Sí, enviar» autoriza el tratamiento de sus datos para contactarle, según nuestra [Política de privacidad](/privacidad/).',
+    '',
     '¿Envío la solicitud?',
   ].join('\n')
 }
@@ -325,36 +328,11 @@ function advance(lead: LeadState, field: LeadField, value: string): LeadState {
   return { step: next ?? 'confirm', data, editing: false }
 }
 
-/** Guarda el lead localmente y lo envía a /api/lead (silencioso si falla). */
+/** Envía el lead al correo de la empresa (FormSubmit) y guarda copia local. */
 function submitLead(data: LeadData): void {
-  const lead = {
-    ...data,
-    fecha: new Date().toISOString(),
-    pagina: typeof location !== 'undefined' ? location.href : '',
-  }
-  try {
-    const raw = localStorage.getItem('cerebro-leads')
-    const parsed: unknown = raw ? JSON.parse(raw) : []
-    const list = Array.isArray(parsed) ? parsed : []
-    list.push(lead)
-    localStorage.setItem('cerebro-leads', JSON.stringify(list))
-  } catch {
-    /* almacenamiento no disponible */
-  }
-  try {
-    fetch('/api/lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lead),
-      keepalive: true,
-    })
-      .then((r) => {
-        if (!r.ok) console.debug('[cerebro] /api/lead respondió', r.status)
-      })
-      .catch((e: unknown) => console.debug('[cerebro] lead no enviado', e))
-  } catch (e) {
-    console.debug('[cerebro] lead no enviado', e)
-  }
+  void sendLead({ ...data }, 'chatbot').then((ok) => {
+    if (!ok) console.debug('[cerebro] lead no enviado; queda copia local')
+  })
 }
 
 function completeLead(d: LeadData, prev: EngineState): EngineResult {
@@ -478,7 +456,8 @@ function handleLead(raw: string, norm: string, prev: EngineState, lead: LeadStat
 function startLead(intent: Intent | undefined, prev: EngineState): EngineResult {
   const lead: LeadState = { step: 'nombre', data: {}, editing: false }
   const intro = intent?.answer ?? 'Con gusto. Le haré **cinco preguntas breves** para que un especialista le contacte.'
-  return askStep(lead, prev, `${intro}\n\n`)
+  const notice = 'Usaremos sus datos solo para contactarle ([Política de privacidad](/privacidad/)). Puede escribir «cancelar» en cualquier momento.'
+  return askStep(lead, prev, `${intro}\n\n${notice}\n\n`)
 }
 
 function fromIntent(intent: Intent, prev: EngineState): EngineResult {

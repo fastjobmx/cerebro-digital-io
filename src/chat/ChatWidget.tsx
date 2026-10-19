@@ -885,7 +885,12 @@ export function ChatWidget() {
                   </button>
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-3 px-1.5 text-[10.5px] leading-tight text-[color:var(--text-3)]">
-                  <span>IA de demostración · Sus datos se usan solo para contactarle</span>
+                  <span>
+                    Asistente virtual · Sus datos se usan solo para contactarle ·{' '}
+                    <a href="/privacidad/" className="underline underline-offset-2 hover:text-white">
+                      Privacidad
+                    </a>
+                  </span>
                   {input.length > MAX_CHARS - 120 && (
                     <span className={`flex-none font-mono tabular-nums ${input.length >= MAX_CHARS ? 'text-magenta' : ''}`}>
                       {input.length}/{MAX_CHARS}

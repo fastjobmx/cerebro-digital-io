@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { gsap } from 'gsap'
-import { ArrowRight, MessageCircle, Mail, Check, Loader2 } from 'lucide-react'
-import { SITE, NAV, askCerebro } from '../config/site'
+import { ArrowRight, MessageCircle, Mail, Check, Loader2, Phone, AlertTriangle } from 'lucide-react'
+import { SITE, NAV, LEGAL_LINKS, askCerebro } from '../config/site'
+import { sendLead } from '../lib/leads'
 import { SplitText, Reveal, Magnetic, REDUCED } from '../components/fx'
 
 /* ------------------------------------------------------------------ */
@@ -118,7 +119,9 @@ function Field({
 export function Contact() {
   const [f, setF] = useState<Lead>(EMPTY)
   const [errors, setErrors] = useState<Partial<Record<keyof Lead, string>>>({})
-  const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'failed'>('idle')
+  const [consent, setConsent] = useState(false)
+  const [consentError, setConsentError] = useState(false)
 
   const set = (n: keyof Lead, v: string) => {
     setF((p) => ({ ...p, [n]: v }))
@@ -140,21 +143,11 @@ export function Contact() {
     if (f.empresa.trim().length < 2) errs.empresa = 'Escriba el nombre de su empresa.'
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.correo.trim())) errs.correo = 'Revise el formato del correo.'
     setErrors(errs)
-    if (Object.keys(errs).length) return
+    setConsentError(!consent)
+    if (Object.keys(errs).length || !consent) return
     setStatus('sending')
-    const lead = { ...f, origen: 'formulario', fecha: new Date().toISOString() }
-    try {
-      const prev = JSON.parse(localStorage.getItem('cerebro-leads') ?? '[]') as unknown[]
-      localStorage.setItem('cerebro-leads', JSON.stringify([...prev, lead]))
-    } catch {
-      /* almacenamiento no disponible */
-    }
-    try {
-      await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
-    } catch {
-      /* sin backend: el usuario puede continuar por WhatsApp o correo */
-    }
-    setTimeout(() => setStatus('done'), 700)
+    const ok = await sendLead({ ...f }, 'formulario')
+    setStatus(ok ? 'done' : 'failed')
   }
 
   const wa = SITE.whatsapp ? `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(summary())}` : ''
@@ -181,6 +174,23 @@ export function Contact() {
                 </span>
                 <ArrowRight size={16} className="ml-auto text-white/50 transition-transform duration-500 ease-expo group-hover:translate-x-1" />
               </button>
+              {SITE.whatsapp && (
+                <a
+                  href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent('Hola, quiero información sobre el Cerebro Digital.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass group flex items-center gap-4 rounded-2xl px-5 py-4 transition-colors hover:border-white/25"
+                >
+                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-emerald-400/30 bg-emerald-400/10">
+                    <Phone size={19} className="text-emerald-400" />
+                  </span>
+                  <span>
+                    <span className="block text-[15px] font-semibold">WhatsApp</span>
+                    <span className="block text-[13px] text-white/50">{SITE.whatsappDisplay}</span>
+                  </span>
+                  <ArrowRight size={16} className="ml-auto text-white/50 transition-transform duration-500 ease-expo group-hover:translate-x-1" />
+                </a>
+              )}
               <a href={`mailto:${SITE.email}`} className="glass group flex items-center gap-4 rounded-2xl px-5 py-4 transition-colors hover:border-white/25">
                 <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5">
                   <Mail size={19} className="text-cyan" />
@@ -197,14 +207,18 @@ export function Contact() {
 
         <Reveal className="lg:col-span-7">
           <div data-r className="panel ring-grad relative overflow-hidden !rounded-[28px] p-6 sm:p-10">
-            {status === 'done' ? (
+            {status === 'done' || status === 'failed' ? (
               <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-gradient-brand shadow-glow-m">
-                  <Check size={28} />
+                <span className={`grid h-16 w-16 place-items-center rounded-full ${status === 'done' ? 'bg-gradient-brand shadow-glow-m' : 'border border-magenta/50 bg-magenta/10'}`}>
+                  {status === 'done' ? <Check size={28} /> : <AlertTriangle size={26} className="text-magenta" />}
                 </span>
-                <h3 className="mt-6 font-display text-3xl font-semibold tracking-tight">Solicitud recibida</h3>
+                <h3 className="mt-6 font-display text-3xl font-semibold tracking-tight">
+                  {status === 'done' ? 'Solicitud recibida' : 'No pudimos enviarla'}
+                </h3>
                 <p className="mt-3 max-w-[400px] text-white/65">
-                  Gracias, {f.nombre.split(' ')[0]}. Revisaremos su caso y le contactaremos. Si prefiere acelerar, continúe por un canal directo:
+                  {status === 'done'
+                    ? `Gracias, ${f.nombre.split(' ')[0]}. Revisaremos su caso y le contactaremos. Si prefiere acelerar, continúe por un canal directo:`
+                    : 'Hubo un problema de conexión. Sus datos no se perdieron: envíelos con un clic por uno de estos canales:'}
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   {wa && (
@@ -216,7 +230,7 @@ export function Contact() {
                     Enviar por correo
                   </a>
                 </div>
-                <button type="button" onClick={() => { setF(EMPTY); setStatus('idle') }} className="mt-6 text-sm text-white/45 underline-offset-4 hover:underline">
+                <button type="button" onClick={() => { setF(EMPTY); setConsent(false); setStatus('idle') }} className="mt-6 text-sm text-white/45 underline-offset-4 hover:underline">
                   Enviar otra solicitud
                 </button>
               </div>
@@ -251,8 +265,31 @@ export function Contact() {
                   </div>
                 </fieldset>
                 <Field label="Mensaje" name="mensaje" value={f.mensaje} onChange={set} textarea />
+                <div>
+                  <label className="flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-white/65">
+                    <span className="relative mt-0.5 grid h-[18px] w-[18px] flex-none place-items-center">
+                      <input
+                        type="checkbox"
+                        checked={consent}
+                        onChange={(e) => {
+                          setConsent(e.target.checked)
+                          if (e.target.checked) setConsentError(false)
+                        }}
+                        aria-invalid={consentError}
+                        className={`peer h-[18px] w-[18px] cursor-pointer appearance-none rounded-[6px] border bg-white/[0.04] transition-colors checked:border-transparent checked:bg-gradient-brand ${consentError ? 'border-magenta' : 'border-white/25'}`}
+                      />
+                      <Check size={12} strokeWidth={3} className="pointer-events-none absolute text-white opacity-0 peer-checked:opacity-100" />
+                    </span>
+                    <span>
+                      Autorizo el tratamiento de mis datos personales para ser contactado, conforme a la{' '}
+                      <a href="/privacidad/" className="text-white underline underline-offset-2 hover:text-cyan">Política de privacidad</a> y los{' '}
+                      <a href="/terminos/" className="text-white underline underline-offset-2 hover:text-cyan">Términos y condiciones</a>. *
+                    </span>
+                  </label>
+                  {consentError && <span className="mt-1.5 block pl-[30px] text-xs text-magenta">Debe aceptar la autorización para enviar la solicitud.</span>}
+                </div>
                 <div className="mt-2 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-                  <p className="text-xs text-white/40">Sus datos se usan solo para contactarle.</p>
+                  <p className="text-xs text-white/40">Los campos con * son obligatorios.</p>
                   <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full sm:w-auto">
                     {status === 'sending' ? <Loader2 size={18} className="animate-spin" /> : null}
                     {status === 'sending' ? 'Enviando…' : 'Solicitar demostración'}
@@ -292,9 +329,19 @@ export function Footer() {
           </div>
         </div>
         <div className="hairline mt-16" />
-        <div className="mt-6 flex flex-col justify-between gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35 sm:flex-row">
-          <span>© {new Date().getFullYear()} {SITE.name}</span>
-          <span>{SITE.tagline}</span>
+        <div className="mt-6 flex flex-col justify-between gap-4 text-[11px] text-white/40 lg:flex-row lg:items-center">
+          <span className="font-mono uppercase tracking-[0.2em]">© {new Date().getFullYear()} {SITE.name}</span>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2 text-[12.5px]">
+            {LEGAL_LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="transition-colors hover:text-white">
+                {l.label}
+              </a>
+            ))}
+            <button type="button" onClick={() => window.dispatchEvent(new Event('cerebro:cookie-settings'))} className="transition-colors hover:text-white">
+              Preferencias de cookies
+            </button>
+          </nav>
+          <span className="font-mono uppercase tracking-[0.2em]">{SITE.tagline}</span>
         </div>
       </div>
     </footer>

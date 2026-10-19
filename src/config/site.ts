@@ -3,10 +3,15 @@ export const SITE = {
   name: 'CEREBRO DIGITAL IO',
   tagline: 'Inteligencia que automatiza.',
   motto: 'Usted decide. El Cerebro ejecuta.',
+  url: 'https://cerebrodigital.io',
   // Número en formato internacional sin "+" ni espacios (ej. 573001234567).
-  // Déjelo vacío para ocultar los botones de WhatsApp.
-  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '',
-  email: import.meta.env.VITE_CONTACT_EMAIL ?? 'hola@cerebrodigital.io',
+  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '573022323472',
+  whatsappDisplay: '+57 302 232 3472',
+  // Correo público de contacto y buzón donde llegan las solicitudes (vía FormSubmit).
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'explorandocdsm@gmail.com',
+  // Destino de FormSubmit. Tras activar el formulario puede reemplazarse por el
+  // alias aleatorio que FormSubmit envía por correo, para no exponer la dirección.
+  leadInbox: import.meta.env.VITE_FORMSUBMIT_ID || 'explorandocdsm@gmail.com',
   // Activa el modo IA del chatbot (requiere desplegar /api/chat con ANTHROPIC_API_KEY).
   aiEnabled: import.meta.env.VITE_AI_ENABLED === 'true',
   logo: {
@@ -16,6 +21,27 @@ export const SITE = {
     word: '/brand/logo-word.webp',
   },
 }
+
+/**
+ * Datos del responsable legal (Ley 1581 de 2012 – Colombia).
+ * Complete los campos entre corchetes antes de publicar.
+ */
+export const LEGAL = {
+  owner: '[Razón social o nombre completo]',
+  idType: 'NIT',
+  idNumber: '[Número de NIT o cédula]',
+  address: '[Dirección]',
+  city: '[Ciudad], Colombia',
+  email: 'explorandocdsm@gmail.com',
+  phone: '+57 302 232 3472',
+  updated: '19 de octubre de 2026',
+}
+
+export const LEGAL_LINKS = [
+  { label: 'Términos y condiciones', href: '/terminos/' },
+  { label: 'Política de privacidad', href: '/privacidad/' },
+  { label: 'Política de cookies', href: '/cookies/' },
+]
 
 export const NAV = [
   { label: 'El Cerebro', href: '#cerebro' },

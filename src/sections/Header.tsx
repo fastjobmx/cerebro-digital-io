@@ -5,7 +5,9 @@ import { NAV, askCerebro } from '../config/site'
 import { BrandLockup } from '../components/Brand'
 import { Magnetic } from '../components/fx'
 
-export function Header() {
+/** home=false en páginas internas: los enlaces apuntan a secciones de la portada. */
+export function Header({ home = true }: { home?: boolean }) {
+  const base = home ? '' : '/'
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
@@ -67,7 +69,7 @@ export function Header() {
               scrolled ? 'glass py-2 pl-3 pr-2 shadow-[0_20px_60px_-30px_rgba(139,92,246,.6)] sm:pl-4' : 'py-1 pl-0 pr-0'
             }`}
           >
-            <a href="#inicio" aria-label="Ir al inicio" className="shrink-0">
+            <a href={home ? '#inicio' : '/'} aria-label="Ir al inicio" className="shrink-0">
               <BrandLockup />
             </a>
 
@@ -77,7 +79,7 @@ export function Header() {
                 return (
                   <a
                     key={l.href}
-                    href={l.href}
+                    href={base + l.href}
                     className={`relative rounded-full px-4 py-2 text-[13px] font-medium transition-colors duration-300 ${
                       on ? 'text-white' : 'text-white/60 hover:text-white'
                     }`}
@@ -92,7 +94,7 @@ export function Header() {
             <div className="flex items-center gap-2">
               <span className="hidden sm:block">
                 <Magnetic>
-                  <a href="#contacto" className="btn btn-primary !h-10 !px-5 !text-[13px]">
+                  <a href={base + '#contacto'} className="btn btn-primary !h-10 !px-5 !text-[13px]">
                     Solicitar demo
                     <ArrowUpRight size={16} />
                   </a>
@@ -129,7 +131,7 @@ export function Header() {
             <span key={l.href} className="overflow-hidden border-b border-white/10">
               <a
                 data-m
-                href={l.href}
+                href={base + l.href}
                 onClick={() => setOpen(false)}
                 tabIndex={open ? 0 : -1}
                 className="flex items-baseline justify-between py-5 font-display text-[2.1rem] font-semibold tracking-tight text-white"
@@ -156,7 +158,7 @@ export function Header() {
             </button>
           </span>
           <span className="overflow-hidden">
-            <a data-m href="#contacto" tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className="btn btn-ghost w-full">
+            <a data-m href={base + '#contacto'} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className="btn btn-ghost w-full">
               Solicitar una demostración
             </a>
           </span>

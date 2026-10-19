@@ -271,3 +271,13 @@ html.is-loading, html.is-loading body { overflow: hidden !important; }
 @media (max-width: 767px) {
   .no-webgl { background-position: center, 50% 18%, center; background-size: auto, 80vw auto, auto; }
 }
+
+/* Texto legal */
+.legal-prose p { color: var(--text-2); line-height: 1.75; font-size: 15.5px; }
+.legal-prose p + p, .legal-prose p + ul, .legal-prose ul + p, .legal-prose p + div, .legal-prose div + p { margin-top: 1rem; }
+.legal-prose ul { display: grid; gap: 0.6rem; color: var(--text-2); font-size: 15.5px; line-height: 1.65; }
+.legal-prose li { position: relative; padding-left: 1.4rem; }
+.legal-prose li::before {
+  content: ''; position: absolute; left: 0.2rem; top: 0.68em; width: 6px; height: 6px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--magenta), var(--cyan));
+}

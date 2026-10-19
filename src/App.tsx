@@ -13,6 +13,7 @@ import { Difference, Cases } from './sections/Difference'
 import { Process, Results } from './sections/Process'
 import { FinalCTA, Contact, Footer } from './sections/Closing'
 import { ChatWidget } from './chat/ChatWidget'
+import { CookieBanner, WhatsAppButton } from './components/Consent'
 
 // La escena 3D (three.js) se carga en un chunk aparte para pintar el contenido antes
 const NeuralScene = lazy(() => import('./three/NeuralScene').then((m) => ({ default: m.NeuralScene })))
@@ -74,7 +75,9 @@ export default function App() {
         <Footer />
       </div>
 
+      <WhatsAppButton />
       <ChatWidget />
+      <CookieBanner />
     </>
   )
 }
