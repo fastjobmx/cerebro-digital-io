@@ -12,7 +12,7 @@ import { Control } from './sections/Control'
 import { Difference, Cases } from './sections/Difference'
 import { Process, Results } from './sections/Process'
 import { FinalCTA, Contact, Footer } from './sections/Closing'
-import { ChatWidget } from './chat/ChatWidget'
+import { LazyChatWidget } from './chat/LazyChatWidget'
 import { CookieBanner, WhatsAppButton } from './components/Consent'
 
 // La escena 3D (three.js) se carga en un chunk aparte para pintar el contenido antes
@@ -76,7 +76,7 @@ export default function App() {
       </div>
 
       <WhatsAppButton />
-      <ChatWidget />
+      <LazyChatWidget />
       <CookieBanner />
     </>
   )

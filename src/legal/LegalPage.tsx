@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowUpRight, MessageCircle } from 'lucide-react'
 import { Header } from '../sections/Header'
 import { Footer } from '../sections/Closing'
-import { ChatWidget } from '../chat/ChatWidget'
+import { LazyChatWidget } from '../chat/LazyChatWidget'
 import { CookieBanner, WhatsAppButton } from '../components/Consent'
 import { LEGAL, LEGAL_LINKS, SITE, askCerebro } from '../config/site'
 import type { LegalDoc } from './content'
@@ -29,7 +29,7 @@ function Shell({ children }: { children: React.ReactNode }) {
         <Footer />
       </div>
       <WhatsAppButton />
-      <ChatWidget />
+      <LazyChatWidget />
       <CookieBanner />
     </>
   )

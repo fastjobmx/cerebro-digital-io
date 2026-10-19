@@ -1,4 +1,4 @@
-import { createElement, useEffect, useRef, useState } from 'react'
+import { Fragment, createElement, useEffect, useRef, useState } from 'react'
 import type { CSSProperties, ElementType, ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -55,15 +55,19 @@ export function SplitText({ lines, as = 'h2', className, delay = 0, immediate = 
     lines.map((line, i) => {
       const text = typeof line === 'string' ? line : line.text
       const cls = typeof line === 'string' ? '' : line.className ?? ''
+      // El espacio entre líneas evita que buscadores y lectores de pantalla lean "existen.Les".
       return (
-        <span key={i} className="split-line">
-          {text.split(' ').map((w, j, arr) => (
-            <span key={j} className={`split-word ${cls}`}>
-              {w}
-              {j < arr.length - 1 ? ' ' : ''}
-            </span>
-          ))}
-        </span>
+        <Fragment key={i}>
+          <span className="split-line">
+            {text.split(' ').map((w, j, arr) => (
+              <span key={j} className={`split-word ${cls}`}>
+                {w}
+                {j < arr.length - 1 ? ' ' : ''}
+              </span>
+            ))}
+          </span>
+          {i < lines.length - 1 ? ' ' : null}
+        </Fragment>
       )
     }),
   )
