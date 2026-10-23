@@ -12,6 +12,7 @@
     <meta name="theme-color" content="#05010D" />
     <meta name="msapplication-TileColor" content="#05010D" />
     <meta name="msapplication-navbutton-color" content="#05010D" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Cerebro IO" />
@@ -44,33 +45,57 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CEREBRO DIGITAL IO — Inteligencia que automatiza" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cerebro Digital para Empresas | CEREBRO DIGITAL IO" />
     <meta name="twitter:description" content="Inteligencia que automatiza. Un cerebro digital para su negocio. Usted decide. El Cerebro ejecuta." />
     <meta name="twitter:image" content="https://cerebrodigital.io/brand/og-image.jpg" />
+    <meta name="twitter:image:alt" content="CEREBRO DIGITAL IO — Inteligencia que automatiza" />
 
-    <!-- Schema.org: Organization / SoftwareApplication -->
+    <!-- Schema.org: Organization + WebSite + Service -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://cerebrodigital.io/#organization",
             "name": "CEREBRO DIGITAL IO",
             "url": "https://cerebrodigital.io/",
             "logo": "https://cerebrodigital.io/brand/icon-512.png",
+            "image": "https://cerebrodigital.io/brand/og-image.jpg",
+            "slogan": "Inteligencia que automatiza.",
             "description": "Construimos cerebros digitales para empresas: inteligencia artificial, automatización e integración de sistemas.",
-            "sameAs": []
+            "email": "explorandocdsm@gmail.com",
+            "telephone": "+57 302 232 3472",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "telephone": "+57 302 232 3472",
+              "email": "explorandocdsm@gmail.com",
+              "areaServed": "CO",
+              "availableLanguage": ["es"]
+            }
           },
           {
-            "@type": "SoftwareApplication",
-            "name": "Cerebro Digital IO",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Web",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" },
-            "description": "Inteligencia artificial empresarial que conecta herramientas, crea inteligencia y automatiza procesos autorizados."
+            "@type": "WebSite",
+            "@id": "https://cerebrodigital.io/#website",
+            "url": "https://cerebrodigital.io/",
+            "name": "CEREBRO DIGITAL IO",
+            "inLanguage": "es",
+            "publisher": { "@id": "https://cerebrodigital.io/#organization" }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://cerebrodigital.io/#service",
+            "name": "Cerebro Digital para empresas",
+            "serviceType": "Inteligencia artificial y automatización empresarial",
+            "description": "Una capa de inteligencia artificial que conoce su empresa, conecta sus herramientas (CRM, correo, agenda, documentos, mensajería) y ejecuta sólo los procesos que usted autoriza.",
+            "provider": { "@id": "https://cerebrodigital.io/#organization" },
+            "areaServed": { "@type": "Country", "name": "Colombia" },
+            "availableLanguage": "es"
           }
         ]
       }
@@ -80,7 +105,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="/brand/logo-full.webp" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&family=Michroma&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Carga no bloqueante: el texto se pinta con la fuente del sistema y cambia al llegar (display=swap) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&family=Michroma&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&family=Michroma&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
   </head>
   <body>
     <div id="app"></div>

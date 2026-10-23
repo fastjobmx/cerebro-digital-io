@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Habitat Sur Inmobiliaria – Neiva · Demo | Cerebro Digital IO</title>
+  <meta name="description" content="Demo de landing page para inmobiliaria en Neiva: arriendo, venta, administración y avalúos. Negocio ficticio creado por Cerebro Digital IO." />
+
+  <!-- ===== DATOS DEL NEGOCIO: edite aquí para clonar esta plantilla ===== -->
+  <style>
+    :root {
+      --primario: #14532d;
+      --primario-2: #0f3f22;
+      --acento: #c9a227;
+      --fondo: #f7f6f0;
+      --superficie: #ffffff;
+      --texto: #1a2a1f;
+      --texto-2: #4a5a4f;
+      --borde: #e3e0d2;
+      --borde-fuerte: #b9b296;
+      --fuente-titulos: 'DM Serif Display', Georgia, serif;
+      --radio: 10px;
+      --radio-boton: 10px;
+    }
+  </style>
+  <script>
+    window.NEGOCIO = {
+      esDemo: true,
+      nombre: 'Habitat Sur Inmobiliaria',
+      nombreCorto: 'Habitat Sur',
+      ciudad: 'Neiva',
+      direccion: 'Avenida de ejemplo # 00-00, oficina 000, Neiva, Huila (dirección ilustrativa)',
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Neiva%2C%20Huila',
+      telefono: '',
+      whatsapp: '573506912734',
+      mensajeWhatsApp: 'Hola, vi la demo de inmobiliaria (Habitat Sur) de Cerebro Digital IO y quiero una página así para mi negocio: ',
+      iconoMarca: 'casa',
+      iconoHero: 'llave',
+      hero: {
+        eyebrow: 'Inmobiliaria en Neiva',
+        titulo: 'Arriende, compre o venda sin enredos',
+        subtitulo: 'Le ayudamos a encontrar el inmueble que busca o a arrendar el suyo con contratos claros, estudio de arrendatarios y acompañamiento en cada paso.',
+        cta: 'Quiero arrendar o vender',
+        cta2: 'Ver servicios',
+        chips: ['Contratos claros', 'Estudio de arrendatarios', 'Acompañamiento legal'],
+        etiquetas: ['Arriendo', 'Venta'],
+        ilustracionAlt: 'Ilustración de una llave dentro de un círculo verde'
+      },
+      servicios: {
+        eyebrow: 'Servicios',
+        titulo: 'Todo para su inmueble, en un solo lugar',
+        intro: 'Propietarios, arrendatarios y compradores: le explicamos cada paso con palabras sencillas.',
+        nota: 'Tarifas de referencia. Las condiciones finales quedan por escrito en el contrato de corretaje o administración.',
+        items: [
+          { icono: 'llave', nombre: 'Arriendo de su inmueble', desc: 'Publicamos, mostramos el inmueble y estudiamos al arrendatario.', precio: 'Desde 1 canon de arriendo' },
+          { icono: 'documento', nombre: 'Administración de arriendos', desc: 'Cobro mensual, pagos al propietario y seguimiento del inmueble.', precio: 'Desde 8% del canon' },
+          { icono: 'casa', nombre: 'Venta de inmuebles', desc: 'Avalúo comercial, fotos, publicación y acompañamiento en la negociación.', precio: 'Desde 3% del valor de venta' },
+          { icono: 'lupa', nombre: 'Avalúo comercial', desc: 'Le decimos cuánto vale su inmueble en el mercado de hoy.', precio: 'Desde $350.000' },
+          { icono: 'usuario', nombre: 'Estudio de arrendatarios', desc: 'Verificamos ingresos, referencias y codeudor antes de firmar.', precio: 'Desde $60.000' },
+          { icono: 'escudo', nombre: 'Asesoría para compra', desc: 'Revisión de documentos, certificado de libertad y promesa de compraventa.', precio: 'Desde $250.000' }
+        ]
+      },
+      porQue: {
+        titulo: 'Tranquilidad para propietarios y familias',
+        items: [
+          { icono: 'documento', titulo: 'Contratos claros', desc: 'Todo queda por escrito, sin letra pequeña ni cobros escondidos.' },
+          { icono: 'escudo', titulo: 'Inmuebles verificados', desc: 'Revisamos documentos y estado del inmueble antes de publicarlo.' },
+          { icono: 'chat', titulo: 'Respuesta rápida', desc: 'Le contestamos por WhatsApp y coordinamos visitas el mismo día.' },
+          { icono: 'llave', titulo: 'Hasta la entrega de llaves', desc: 'Lo acompañamos desde la primera visita hasta la firma y la entrega.' }
+        ]
+      },
+      horarios: [
+        ['Lunes a viernes', '8:00 a. m. – 6:00 p. m.'],
+        ['Sábados', '9:00 a. m. – 1:00 p. m.'],
+        ['Visitas a inmuebles', 'Con cita, también sábados']
+      ],
+      faq: [
+        ['¿Cuánto cobran por arrendar mi inmueble?', 'Por la búsqueda y el estudio del arrendatario cobramos desde el valor de un canon. Si además lo administramos, desde el 8% mensual.'],
+        ['¿Qué documentos necesito para arrendar?', 'Cédula, certificado laboral o extractos bancarios y los datos de un codeudor. Le enviamos la lista completa por WhatsApp.'],
+        ['¿Muestran inmuebles los fines de semana?', 'Sí, los sábados con cita previa.'],
+        ['¿Trabajan fuera de Neiva?', 'Sí, también en municipios cercanos como Rivera, Palermo y Campoalegre.']
+      ],
+      // Fotos de stock libres (Unsplash). Para un cliente real, reemplácelas por sus propias fotos.
+      fotos: {
+        hero: { src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2', alt: 'Sala amplia y luminosa con sofás beige y ventanales', posicion: '50% 50%' },
+        porQue: { src: 'https://images.unsplash.com/photo-1741156386380-0236c72eb6f9', alt: 'Mano entregando las llaves de una vivienda frente a la puerta' },
+        galeria: {
+          eyebrow: 'Inmuebles',
+          titulo: 'El tipo de inmuebles que manejamos',
+          items: [
+            { src: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267', alt: 'Sala de apartamento ordenada con muebles modernos', texto: 'Salas amplias e iluminadas' },
+            { src: 'https://images.unsplash.com/photo-1484154218962-a197022b5858', alt: 'Cocina integral moderna con nevera de acero', texto: 'Cocinas integrales' },
+            { src: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd', alt: 'Habitación con cama doble y mesita de noche', texto: 'Habitaciones listas para habitar' }
+          ]
+        }
+      },
+      ctaFinal: {
+        titulo: '¿Tiene un inmueble desocupado?',
+        texto: 'Escríbanos por WhatsApp y le decimos en cuánto podría arrendarlo o venderlo.',
+        boton: 'Hablar con un asesor'
+      }
+    };
+  </script>
+  <!-- ===== FIN DE LOS DATOS DEL NEGOCIO ===== -->
+  <!-- Fotos: conexión anticipada y precarga de la foto del hero (se lee de NEGOCIO, no hay que repetir la URL) -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (function (f) {
+      if (!f || !/^https:\/\/images\.unsplash\.com\//.test(f.src)) return;
+      var u = function (w) { return f.src + (f.src.indexOf('?') < 0 ? '?' : '&') + 'auto=format&fit=crop&q=70&w=' + w; };
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = u(960);
+      l.setAttribute('imagesrcset', [640, 960, 1400, 1920].map(function (w) { return u(w) + ' ' + w + 'w'; }).join(', '));
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })(window.NEGOCIO.fotos && window.NEGOCIO.fotos.hero);
+  </script>
+
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#14532d" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="plantilla.css" />
+  <script src="plantilla.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#app">Saltar al contenido</a>
+  <main id="app">
+    <noscript><p style="padding:24px">Habitat Sur Inmobiliaria (demo). Active JavaScript para ver la página completa.</p></noscript>
+  </main>
+</body>
+</html>

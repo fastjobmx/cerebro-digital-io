@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>FríoExpress Neiva – Reparación de A/C 24h · Demo | Cerebro Digital IO</title>
+  <meta name="description" content="Demo de landing page para técnicos de aire acondicionado en Neiva: mantenimiento, reparación e instalación a domicilio. Negocio ficticio creado por Cerebro Digital IO." />
+
+  <!-- ===== DATOS DEL NEGOCIO: edite aquí para clonar esta plantilla ===== -->
+  <style>
+    :root {
+      --primario: #1d4ed8;
+      --primario-2: #1e40af;
+      --acento: #f59e0b;
+      --fondo: #f5f8ff;
+      --superficie: #ffffff;
+      --texto: #0f1b3d;
+      --texto-2: #475273;
+      --borde: #dce5fa;
+      --borde-fuerte: #a9bdf0;
+      --fuente-titulos: 'Archivo', system-ui, sans-serif;
+      --radio: 14px;
+      --radio-boton: 12px;
+    }
+  </style>
+  <script>
+    window.NEGOCIO = {
+      esDemo: true,
+      nombre: 'FríoExpress Neiva – Reparación de A/C 24h',
+      nombreCorto: 'FríoExpress Neiva',
+      ciudad: 'Neiva',
+      direccion: 'Servicio a domicilio en toda Neiva · Taller: calle de ejemplo # 00-00 (dirección ilustrativa)',
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Neiva%2C%20Huila',
+      telefono: '',
+      whatsapp: '573506912734',
+      mensajeWhatsApp: 'Hola, vi la demo de aire acondicionado (FríoExpress) de Cerebro Digital IO y quiero una página así para mi negocio: ',
+      iconoMarca: 'copo',
+      iconoHero: 'copo',
+      hero: {
+        eyebrow: 'Reparación de aire acondicionado 24h · Neiva',
+        titulo: '¿Se dañó el aire? Vamos hoy mismo',
+        subtitulo: 'Mantenimiento, reparación e instalación de aires acondicionados a domicilio. Le damos el diagnóstico y el precio antes de arreglar.',
+        cta: 'Pedir un técnico ahora',
+        cta2: 'Ver precios',
+        chips: ['Servicio 24 horas', 'Técnicos a domicilio', 'Garantía por escrito'],
+        etiquetas: ['24 horas', 'A domicilio'],
+        ilustracionAlt: 'Ilustración de un copo de nieve dentro de un círculo azul'
+      },
+      servicios: {
+        eyebrow: 'Servicios',
+        titulo: 'Lo que hacemos por su aire',
+        intro: 'Trabajamos con minisplit, ventana y equipos para negocios de todas las marcas.',
+        nota: 'Precios de referencia para equipos residenciales. Repuestos aparte. Recargo nocturno y festivo informado antes de ir.',
+        items: [
+          { icono: 'herramienta', nombre: 'Mantenimiento preventivo', desc: 'Limpieza de filtros, serpentines y desagüe para que enfríe como nuevo.', precio: 'Desde $90.000' },
+          { icono: 'lupa', nombre: 'Diagnóstico a domicilio', desc: 'Revisamos el equipo y le decimos qué tiene y cuánto cuesta arreglarlo.', precio: 'Desde $40.000' },
+          { icono: 'termometro', nombre: 'Carga de gas', desc: 'Detección de fugas y recarga de gas refrigerante.', precio: 'Desde $150.000' },
+          { icono: 'rayo', nombre: 'Reparación eléctrica', desc: 'Tarjetas, capacitores, ventiladores y sensores.', precio: 'Desde $120.000' },
+          { icono: 'copo', nombre: 'Instalación de minisplit', desc: 'Instalación de equipos hasta 12.000 BTU con materiales básicos.', precio: 'Desde $280.000' },
+          { icono: 'edificio', nombre: 'Planes para negocios', desc: 'Mantenimiento programado para locales, oficinas y consultorios.', precio: 'Según visita' }
+        ]
+      },
+      porQue: {
+        titulo: 'Sin sorpresas en la factura',
+        items: [
+          { icono: 'documento', titulo: 'Diagnóstico claro', desc: 'Le explicamos la falla y el precio antes de tocar el equipo.' },
+          { icono: 'moto', titulo: 'Llegamos rápido', desc: 'Cobertura en toda Neiva, también de noche y en festivos.' },
+          { icono: 'escudo', titulo: 'Garantía por escrito', desc: 'Cada reparación queda con garantía y factura.' },
+          { icono: 'tarjeta', titulo: 'Paga al terminar', desc: 'Nequi, Daviplata, transferencia o efectivo cuando el aire ya enfría.' }
+        ]
+      },
+      horarios: [
+        ['Todos los días', '24 horas'],
+        ['Noches y festivos', 'Con recargo, informado antes'],
+        ['Planes para negocios', 'Lunes a sábado, con cita']
+      ],
+      faq: [
+        ['¿Cobran la visita?', 'El diagnóstico tiene un valor de referencia de $40.000 y se descuenta si hacemos la reparación.'],
+        ['¿Cada cuánto debo hacer mantenimiento?', 'En Neiva, por el calor y el uso diario, recomendamos cada 4 a 6 meses.'],
+        ['¿Atienden fines de semana y festivos?', 'Sí, atendemos todos los días. En la noche y festivos aplica un recargo que le decimos antes de ir.'],
+        ['¿Dan garantía?', 'Sí. Todas las reparaciones y la instalación quedan con garantía por escrito.']
+      ],
+      // Respuestas propias del chatbot (opcional): se activan por palabras clave
+      chatbot: {
+        respuestas: [
+          { palabras: ['enfria', 'calienta', 'gotea', 'ruido', 'prende', 'apaga', 'dano', 'danado', 'falla'], respuesta: 'Puede ser falta de mantenimiento, poco gas refrigerante o una falla eléctrica. Le hacemos el diagnóstico a domicilio desde $40.000 y le decimos el precio antes de arreglar.' },
+          { palabras: ['btu', 'instalar', 'instalacion', 'comprar'], respuesta: 'Instalamos minisplit hasta 12.000 BTU desde $280.000 con materiales básicos. Para equipos más grandes o instalaciones especiales, cotizamos según visita.' }
+        ]
+      },
+      // Fotos de stock libres (Unsplash). Para un cliente real, reemplácelas por sus propias fotos.
+      fotos: {
+        hero: { src: 'https://images.unsplash.com/photo-1759772238012-9d5ad59ae637', alt: 'Aire acondicionado minisplit instalado en una pared blanca', posicion: '50% 30%' },
+        porQue: { src: 'https://images.unsplash.com/photo-1660330589827-da8ab7dd3c02', alt: 'Técnico revisando un tablero eléctrico durante un servicio' },
+        galeria: {
+          eyebrow: 'Nuestro trabajo',
+          titulo: 'Trabajo limpio y bien hecho',
+          items: [
+            { src: 'https://images.unsplash.com/photo-1724488751821-1415f5cf4960', alt: 'Unidad exterior de aire acondicionado instalada junto a una pared', texto: 'Instalación de unidades exteriores' },
+            { src: 'https://images.unsplash.com/photo-1770625467384-304e461ef1be', alt: 'Persona ajustando un termostato digital en la pared', texto: 'Ajuste y control de temperatura' },
+            { src: 'https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5', alt: 'Técnicos trabajando con equipos de aire en la azotea de un edificio', texto: 'Mantenimiento para negocios' }
+          ]
+        }
+      },
+      ctaFinal: {
+        titulo: '¿Su aire no enfría? No espere más calor',
+        texto: 'Escríbanos por WhatsApp con la marca del equipo y una foto. Le respondemos con el diagnóstico inicial.',
+        boton: 'Pedir técnico por WhatsApp'
+      }
+    };
+  </script>
+  <!-- ===== FIN DE LOS DATOS DEL NEGOCIO ===== -->
+  <!-- Fotos: conexión anticipada y precarga de la foto del hero (se lee de NEGOCIO, no hay que repetir la URL) -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (function (f) {
+      if (!f || !/^https:\/\/images\.unsplash\.com\//.test(f.src)) return;
+      var u = function (w) { return f.src + (f.src.indexOf('?') < 0 ? '?' : '&') + 'auto=format&fit=crop&q=70&w=' + w; };
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = u(960);
+      l.setAttribute('imagesrcset', [640, 960, 1400, 1920].map(function (w) { return u(w) + ' ' + w + 'w'; }).join(', '));
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })(window.NEGOCIO.fotos && window.NEGOCIO.fotos.hero);
+  </script>
+
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#1d4ed8" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="plantilla.css" />
+  <script src="plantilla.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#app">Saltar al contenido</a>
+  <main id="app">
+    <noscript><p style="padding:24px">FríoExpress Neiva (demo). Active JavaScript para ver la página completa.</p></noscript>
+  </main>
+</body>
+</html>

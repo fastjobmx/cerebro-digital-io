@@ -49,6 +49,8 @@ export const NAV = [
   { label: 'Casos', href: '#casos' },
   { label: 'Proceso', href: '#proceso' },
   { label: 'Contacto', href: '#contacto' },
+  // Página de servicio con la promoción de landing pages (ruta absoluta, no es una sección de la portada)
+  { label: 'Promo', href: '/landing-pages/' },
 ]
 
 export const TOOLS = ['CRM', 'Correo', 'Agenda', 'Documentos', 'Mensajería', 'Reportes', 'Redes', 'Facturación']

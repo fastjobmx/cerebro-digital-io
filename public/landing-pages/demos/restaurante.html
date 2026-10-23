@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Fogón Opita Gastrobar – Neiva · Demo | Cerebro Digital IO</title>
+  <meta name="description" content="Demo de landing page para restaurante y gastrobar en Neiva: carta, reservas, domicilios y eventos. Negocio ficticio creado por Cerebro Digital IO." />
+
+  <!-- ===== DATOS DEL NEGOCIO: edite aquí para clonar esta plantilla ===== -->
+  <style>
+    :root {
+      color-scheme: dark;
+      --primario: #c2410c;
+      --primario-2: #9a3412;
+      --primario-texto: #fdba74;
+      --foco: #f2b705;
+      --acento: #f2b705;
+      --fondo: #17100b;
+      --superficie: #231912;
+      --texto: #fbefe3;
+      --texto-2: #dcc8b4;
+      --borde: #3d2d20;
+      --borde-fuerte: #6b5240;
+      --fuente-titulos: 'Bitter', Georgia, serif;
+      --radio: 16px;
+    }
+  </style>
+  <script>
+    window.NEGOCIO = {
+      esDemo: true,
+      nombre: 'Fogón Opita Gastrobar',
+      nombreCorto: 'Fogón Opita',
+      ciudad: 'Neiva',
+      direccion: 'Carrera de ejemplo # 00-00, Neiva, Huila (dirección ilustrativa)',
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Neiva%2C%20Huila',
+      telefono: '',
+      whatsapp: '573506912734',
+      mensajeWhatsApp: 'Hola, vi la demo de restaurante (Fogón Opita Gastrobar) de Cerebro Digital IO y quiero una página así para mi negocio: ',
+      iconoMarca: 'fuego',
+      iconoHero: 'fuego',
+      hero: {
+        eyebrow: 'Gastrobar en Neiva',
+        titulo: 'Sabor huilense a la brasa, con música y buena compañía',
+        subtitulo: 'Asado huilense, picadas para compartir, cócteles y cervezas frías. Reserve su mesa o pida a domicilio por WhatsApp.',
+        cta: 'Reservar mesa',
+        cta2: 'Ver la carta',
+        chips: ['Asado huilense', 'Domicilios', 'Eventos privados'],
+        etiquetas: ['A la brasa', 'Domicilios'],
+        ilustracionAlt: 'Ilustración de una llama dentro de un círculo naranja'
+      },
+      servicios: {
+        eyebrow: 'Nuestra carta',
+        menu: 'Carta',
+        titulo: 'Platos para antojarse',
+        intro: 'Una muestra de nuestra carta. Pregunte por el plato del día y las promociones de la semana.',
+        nota: 'Precios de referencia. Pueden variar sin previo aviso. Domicilio con costo según el barrio.',
+        items: [
+          { icono: 'fuego', nombre: 'Asado huilense', desc: 'Cerdo marinado y horneado al estilo opita, con arepa oreja de perro y yuca.', precio: '$38.000' },
+          { icono: 'grupo', nombre: 'Picada opita para dos', desc: 'Chorizo, chicharrón, carne, papa criolla, maduro y guacamole.', precio: '$52.000' },
+          { icono: 'cubiertos', nombre: 'Tamal huilense', desc: 'Tamal tradicional con chocolate o café, ideal para el fin de semana.', precio: '$14.000' },
+          { icono: 'cubiertos', nombre: 'Hamburguesa de la casa', desc: 'Carne a la brasa, queso derretido, tocineta y papas rústicas.', precio: '$29.000' },
+          { icono: 'copa', nombre: 'Cóctel de la casa', desc: 'Preparado con frutas de temporada del Huila.', precio: '$22.000' },
+          { icono: 'gota', nombre: 'Limonada de coco', desc: 'Cremosa, fría y perfecta para el calor de Neiva.', precio: '$10.000' }
+        ]
+      },
+      porQue: {
+        titulo: 'Un plan para comer, brindar y quedarse',
+        items: [
+          { icono: 'fuego', titulo: 'A la brasa de verdad', desc: 'Carnes preparadas en parrilla de carbón, como en casa de la abuela.' },
+          { icono: 'grupo', titulo: 'Para compartir', desc: 'Picadas y porciones pensadas para venir con la familia o los amigos.' },
+          { icono: 'moto', titulo: 'Domicilios', desc: 'Pida por WhatsApp y le llevamos su pedido caliente en Neiva.' },
+          { icono: 'musica', titulo: 'Eventos', desc: 'Cumpleaños, reuniones de empresa y celebraciones con menú especial.' }
+        ]
+      },
+      horarios: [
+        ['Martes a jueves', '12:00 m. – 11:00 p. m.'],
+        ['Viernes y sábado', '12:00 m. – 1:00 a. m.'],
+        ['Domingo', '12:00 m. – 6:00 p. m.'],
+        ['Lunes', 'Cerrado']
+      ],
+      faq: [
+        ['¿Hacen reservas?', 'Sí. Escríbanos por WhatsApp con la fecha, la hora y el número de personas.'],
+        ['¿Tienen domicilios?', 'Sí, en Neiva. El costo del domicilio depende del barrio.'],
+        ['¿Hacen eventos privados?', 'Sí. Para grupos de más de 15 personas armamos un menú especial. Pregúntenos por disponibilidad.'],
+        ['¿Tienen opciones vegetarianas?', 'Sí, tenemos platos sin carne. Pregunte por las opciones del día.']
+      ],
+      // Fotos de stock libres (Unsplash). Para un cliente real, reemplácelas por sus propias fotos.
+      fotos: {
+        hero: { src: 'https://images.unsplash.com/photo-1708388464878-5df2d66b758e', alt: 'Carnes asándose a la parrilla sobre brasas encendidas', posicion: '50% 50%' },
+        porQue: { src: 'https://images.unsplash.com/photo-1755811248324-c70c1f10a7fd', alt: 'Amigos compartiendo varios platos en una mesa' },
+        galeria: {
+          eyebrow: 'El Fogón',
+          titulo: 'Así se vive el Fogón',
+          items: [
+            { src: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20', alt: 'Barra de bar iluminada con bombillas cálidas', texto: 'Barra y cócteles' },
+            { src: 'https://images.unsplash.com/photo-1777502286499-d91d3339be30', alt: 'Brochetas de carne sobre brasas', texto: 'A la brasa de verdad' },
+            { src: 'https://images.unsplash.com/photo-1761712826031-6456b87bd811', alt: 'Costillas a la parrilla servidas con ensalada', texto: 'Platos para compartir' }
+          ]
+        }
+      },
+      ctaFinal: {
+        titulo: '¿Plan para este fin de semana?',
+        texto: 'Reserve su mesa por WhatsApp y llegue directo a disfrutar.',
+        boton: 'Reservar por WhatsApp'
+      }
+    };
+  </script>
+  <!-- ===== FIN DE LOS DATOS DEL NEGOCIO ===== -->
+  <!-- Fotos: conexión anticipada y precarga de la foto del hero (se lee de NEGOCIO, no hay que repetir la URL) -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (function (f) {
+      if (!f || !/^https:\/\/images\.unsplash\.com\//.test(f.src)) return;
+      var u = function (w) { return f.src + (f.src.indexOf('?') < 0 ? '?' : '&') + 'auto=format&fit=crop&q=70&w=' + w; };
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = u(960);
+      l.setAttribute('imagesrcset', [640, 960, 1400, 1920].map(function (w) { return u(w) + ' ' + w + 'w'; }).join(', '));
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })(window.NEGOCIO.fotos && window.NEGOCIO.fotos.hero);
+  </script>
+
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#17100b" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="plantilla.css" />
+  <script src="plantilla.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#app">Saltar al contenido</a>
+  <main id="app">
+    <noscript><p style="padding:24px">Fogón Opita Gastrobar (demo). Active JavaScript para ver la página completa.</p></noscript>
+  </main>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Patitas Felices Clínica Veterinaria – Neiva · Demo | Cerebro Digital IO</title>
+  <meta name="description" content="Demo de landing page para clínica veterinaria en Neiva: consulta, vacunas, peluquería y urgencias. Negocio ficticio creado por Cerebro Digital IO." />
+
+  <!-- ===== DATOS DEL NEGOCIO: edite aquí para clonar esta plantilla ===== -->
+  <style>
+    :root {
+      --primario: #c2410c;
+      --primario-2: #9a3412;
+      --acento: #fbbf24;
+      --fondo: #fff8f1;
+      --superficie: #ffffff;
+      --texto: #3b1f0e;
+      --texto-2: #6b4a36;
+      --borde: #f5e1cf;
+      --borde-fuerte: #e2b48f;
+      --fuente-titulos: 'Fredoka', system-ui, sans-serif;
+      --radio: 22px;
+    }
+  </style>
+  <script>
+    window.NEGOCIO = {
+      esDemo: true,
+      nombre: 'Patitas Felices Clínica Veterinaria',
+      nombreCorto: 'Patitas Felices',
+      ciudad: 'Neiva',
+      direccion: 'Calle de ejemplo # 00-00, Neiva, Huila (dirección ilustrativa)',
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Neiva%2C%20Huila',
+      telefono: '',
+      whatsapp: '573506912734',
+      mensajeWhatsApp: 'Hola, vi la demo de veterinaria (Patitas Felices) de Cerebro Digital IO y quiero una página así para mi negocio: ',
+      iconoMarca: 'huella',
+      iconoHero: 'huella',
+      hero: {
+        eyebrow: 'Clínica veterinaria en Neiva',
+        titulo: 'Cuidamos a quien lo acompaña todos los días',
+        subtitulo: 'Consulta, vacunas, peluquería y urgencias para perros y gatos, con veterinarios que le explican todo con paciencia.',
+        cta: 'Agendar consulta',
+        cta2: 'Ver servicios',
+        chips: ['Urgencias', 'Perros y gatos', 'Peluquería'],
+        etiquetas: ['Vacunas', 'Consulta'],
+        ilustracionAlt: 'Ilustración de una huella de mascota dentro de un círculo naranja'
+      },
+      servicios: {
+        eyebrow: 'Servicios',
+        titulo: 'Todo para su mascota en un mismo lugar',
+        intro: 'Desde la primera vacuna hasta los controles de su compañero de toda la vida.',
+        nota: 'Precios de referencia para perros y gatos pequeños. El valor puede variar según peso y caso.',
+        items: [
+          { icono: 'huella', nombre: 'Consulta general', desc: 'Revisión completa, peso, temperatura y recomendaciones de cuidado.', precio: 'Desde $50.000' },
+          { icono: 'jeringa', nombre: 'Vacunación', desc: 'Plan de vacunas para cachorros y refuerzos anuales con carné.', precio: 'Desde $45.000 por vacuna' },
+          { icono: 'escudo', nombre: 'Desparasitación', desc: 'Interna y externa, con recordatorio de la próxima dosis.', precio: 'Desde $25.000' },
+          { icono: 'tijera', nombre: 'Peluquería y baño', desc: 'Baño, corte, limpieza de oídos y corte de uñas.', precio: 'Desde $40.000' },
+          { icono: 'corazon', nombre: 'Esterilización', desc: 'Cirugía con valoración previa, anestesia monitoreada y controles.', precio: 'Desde $250.000' },
+          { icono: 'rayo', nombre: 'Urgencias', desc: 'Atención prioritaria para accidentes, intoxicaciones y dolor.', precio: 'Desde $80.000' }
+        ]
+      },
+      porQue: {
+        titulo: 'Su mascota en manos que la quieren',
+        items: [
+          { icono: 'corazon', titulo: 'Trato con cariño', desc: 'Manejo tranquilo para que su mascota no llegue estresada a cada visita.' },
+          { icono: 'documento', titulo: 'Explicaciones claras', desc: 'Le decimos qué tiene, qué tratamiento sigue y cuánto cuesta.' },
+          { icono: 'calendario', titulo: 'Recordatorio de vacunas', desc: 'Le escribimos por WhatsApp cuando toque la próxima dosis.' },
+          { icono: 'reloj', titulo: 'Urgencias', desc: 'Si es una emergencia, escríbanos y lo orientamos de inmediato.' }
+        ]
+      },
+      horarios: [
+        ['Lunes a sábado', '8:00 a. m. – 7:00 p. m.'],
+        ['Domingos y festivos', '9:00 a. m. – 1:00 p. m.'],
+        ['Urgencias', 'Por WhatsApp, todos los días']
+      ],
+      faq: [
+        ['¿Necesito cita?', 'Para consulta y peluquería recomendamos agendar por WhatsApp. Las urgencias se atienden por orden de gravedad.'],
+        ['¿Atienden gatos?', 'Sí, atendemos perros y gatos de todas las edades.'],
+        ['¿Cada cuánto debo vacunar a mi mascota?', 'Los cachorros siguen un plan de varias dosis; los adultos, refuerzo anual. Le damos el calendario en la primera consulta.'],
+        ['¿Recogen a domicilio para peluquería?', 'Sí, en Neiva con costo adicional según el barrio. Pregúntenos por WhatsApp.']
+      ],
+      // Fotos de stock libres (Unsplash). Para un cliente real, reemplácelas por sus propias fotos.
+      fotos: {
+        hero: { src: 'https://images.unsplash.com/photo-1770836037793-95bdbf190f71', alt: 'Veterinario examinando a un perro salchicha en la clínica', posicion: '60% 40%' },
+        porQue: { src: 'https://images.unsplash.com/photo-1654895716780-b4664497420d', alt: 'Perro chihuahua en brazos de su dueño durante una consulta' },
+        galeria: {
+          eyebrow: 'Nuestra clínica',
+          titulo: 'Un lugar donde su mascota se siente segura',
+          items: [
+            { src: 'https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5', alt: 'Gato atigrado en brazos de una persona', texto: 'Atención para gatos' },
+            { src: 'https://images.unsplash.com/photo-1733783489145-f3d3ee7a9ccf', alt: 'Gato blanco recibiendo una revisión', texto: 'Revisiones con calma' },
+            { src: 'https://images.unsplash.com/photo-1770836037289-e00e5f351d11', alt: 'Veterinario auscultando a un perro negro en la camilla', texto: 'Consulta para perros' }
+          ]
+        }
+      },
+      ctaFinal: {
+        titulo: '¿Cuándo fue su último chequeo?',
+        texto: 'Escríbanos por WhatsApp y le asignamos una cita para su mascota.',
+        boton: 'Agendar por WhatsApp'
+      }
+    };
+  </script>
+  <!-- ===== FIN DE LOS DATOS DEL NEGOCIO ===== -->
+  <!-- Fotos: conexión anticipada y precarga de la foto del hero (se lee de NEGOCIO, no hay que repetir la URL) -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (function (f) {
+      if (!f || !/^https:\/\/images\.unsplash\.com\//.test(f.src)) return;
+      var u = function (w) { return f.src + (f.src.indexOf('?') < 0 ? '?' : '&') + 'auto=format&fit=crop&q=70&w=' + w; };
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = u(960);
+      l.setAttribute('imagesrcset', [640, 960, 1400, 1920].map(function (w) { return u(w) + ' ' + w + 'w'; }).join(', '));
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })(window.NEGOCIO.fotos && window.NEGOCIO.fotos.hero);
+  </script>
+
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#c2410c" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="plantilla.css" />
+  <script src="plantilla.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#app">Saltar al contenido</a>
+  <main id="app">
+    <noscript><p style="padding:24px">Patitas Felices Clínica Veterinaria (demo). Active JavaScript para ver la página completa.</p></noscript>
+  </main>
+</body>
+</html>

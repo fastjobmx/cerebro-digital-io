@@ -78,7 +78,9 @@ export default async function handler(req: Request): Promise<Response> {
         // para minimizar latencia hasta el primer token.
         thinking: { type: 'disabled' },
         output_config: { effort: 'low' },
-        system: SYSTEM_PROMPT,
+        // El prompt de sistema es idéntico para todos los visitantes: se cachea para
+        // que cada mensaje lea esos tokens desde caché (más barato y con menos latencia).
+        system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
         messages,
         stream: true,
       }),
