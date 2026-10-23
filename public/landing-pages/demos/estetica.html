@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aura Estética &amp; Piel – Neiva · Demo | Cerebro Digital IO</title>
+  <meta name="description" content="Demo de landing page para clínica de medicina estética en Neiva: limpiezas faciales, manchas y rejuvenecimiento. Negocio ficticio creado por Cerebro Digital IO." />
+
+  <!-- ===== DATOS DEL NEGOCIO: edite aquí para clonar esta plantilla ===== -->
+  <style>
+    :root {
+      --primario: #9d4e6a;
+      --primario-2: #7f3c55;
+      --acento: #e8b4a0;
+      --fondo: #fdf6f3;
+      --superficie: #ffffff;
+      --texto: #3a1f2a;
+      --texto-2: #6b4a56;
+      --borde: #f0dcd4;
+      --borde-fuerte: #d9b2a6;
+      --fuente-titulos: 'Cormorant Garamond', Georgia, serif;
+      --radio: 24px;
+    }
+  </style>
+  <script>
+    window.NEGOCIO = {
+      esDemo: true,
+      nombre: 'Aura Estética & Piel',
+      nombreCorto: 'Aura Estética & Piel',
+      ciudad: 'Neiva',
+      direccion: 'Carrera de ejemplo # 00-00, Neiva, Huila (dirección ilustrativa)',
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Neiva%2C%20Huila',
+      telefono: '',
+      whatsapp: '573506912734',
+      mensajeWhatsApp: 'Hola, vi la demo de medicina estética (Aura Estética & Piel) de Cerebro Digital IO y quiero una página así para mi negocio: ',
+      iconoMarca: 'destello',
+      iconoHero: 'hoja',
+      hero: {
+        eyebrow: 'Medicina estética en Neiva',
+        titulo: 'Piel cuidada, resultados naturales',
+        subtitulo: 'Tratamientos faciales con valoración previa, productos de grado médico y un plan pensado para su piel, no para venderle paquetes.',
+        cta: 'Reservar mi valoración',
+        cta2: 'Ver tratamientos',
+        chips: ['Valoración personalizada', 'Resultados naturales', 'Ambiente privado'],
+        etiquetas: ['Valoración', 'Piel radiante'],
+        ilustracionAlt: 'Ilustración de una hoja dentro de un círculo rosa'
+      },
+      servicios: {
+        eyebrow: 'Tratamientos',
+        menu: 'Tratamientos',
+        titulo: 'Tratamientos para cada necesidad',
+        intro: 'Toda atención empieza con una valoración para recomendarle solo lo que su piel necesita.',
+        nota: 'Precios de referencia por sesión. El plan y el valor final se definen en la valoración.',
+        items: [
+          { icono: 'gota', nombre: 'Limpieza facial profunda', desc: 'Extracción, exfoliación e hidratación para una piel limpia y luminosa.', precio: 'Desde $120.000' },
+          { icono: 'hoja', nombre: 'Hidratación facial', desc: 'Recupera la suavidad y el brillo de la piel deshidratada.', precio: 'Desde $150.000' },
+          { icono: 'destello', nombre: 'Peeling para manchas', desc: 'Ayuda a unificar el tono y mejorar la textura de la piel.', precio: 'Desde $180.000' },
+          { icono: 'escudo', nombre: 'Microneedling', desc: 'Estimula la renovación de la piel en marcas y poros abiertos.', precio: 'Desde $250.000' },
+          { icono: 'jeringa', nombre: 'Toxina botulínica', desc: 'Suaviza líneas de expresión por zona, con aspecto descansado.', precio: 'Desde $650.000' },
+          { icono: 'corazon', nombre: 'Ácido hialurónico', desc: 'Hidratación profunda y volumen sutil en labios o pómulos.', precio: 'Desde $900.000' }
+        ]
+      },
+      porQue: {
+        titulo: 'Cuidamos su piel con criterio',
+        items: [
+          { icono: 'usuario', titulo: 'Valoración antes de todo', desc: 'Revisamos su piel y su historia antes de recomendar cualquier tratamiento.' },
+          { icono: 'escudo', titulo: 'Productos de grado médico', desc: 'Usamos productos con registro sanitario vigente y trazabilidad.' },
+          { icono: 'hoja', titulo: 'Naturalidad ante todo', desc: 'Buscamos que se vea descansada, no transformada.' },
+          { icono: 'calendario', titulo: 'Seguimiento', desc: 'Le escribimos después del tratamiento para saber cómo va su piel.' }
+        ]
+      },
+      horarios: [
+        ['Lunes a viernes', '9:00 a. m. – 7:00 p. m.'],
+        ['Sábados', '9:00 a. m. – 3:00 p. m.'],
+        ['Domingos y festivos', 'Cerrado']
+      ],
+      faq: [
+        ['¿Necesito valoración antes del tratamiento?', 'Sí. En la valoración revisamos su piel, resolvemos sus dudas y definimos el tratamiento adecuado.'],
+        ['¿Los tratamientos duelen?', 'La mayoría son cómodos. En los que pueden generar molestia usamos anestesia tópica.'],
+        ['¿Cuántas sesiones necesito?', 'Depende de su piel y del objetivo. En la valoración le damos un número estimado de sesiones.'],
+        ['¿Qué medios de pago reciben?', 'Efectivo, Nequi, Daviplata, transferencia y tarjeta débito o crédito.']
+      ],
+      // Fotos de stock libres (Unsplash). Para un cliente real, reemplácelas por sus propias fotos.
+      fotos: {
+        hero: { src: 'https://images.unsplash.com/photo-1552693673-1bf958298935', alt: 'Especialista realizando un tratamiento facial a una paciente', posicion: '60% 40%' },
+        porQue: { src: 'https://images.unsplash.com/photo-1713085085470-fba013d67e65', alt: 'Tratamiento facial con equipo de aparatología sobre la piel de una paciente' },
+        galeria: {
+          eyebrow: 'Nuestro espacio',
+          titulo: 'Un espacio tranquilo para cuidar su piel',
+          items: [
+            { src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881', alt: 'Aplicación de mascarilla facial con brocha a una paciente', texto: 'Mascarillas y limpiezas' },
+            { src: 'https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f', alt: 'Gotero con sérum facial', texto: 'Productos de grado médico' },
+            { src: 'https://images.unsplash.com/photo-1782159981479-5e90597f284a', alt: 'Paciente recibiendo un masaje facial relajante', texto: 'Ambiente tranquilo y privado' }
+          ]
+        }
+      },
+      ctaFinal: {
+        titulo: 'Su piel merece un plan hecho para usted',
+        texto: 'Escríbanos por WhatsApp y reserve su valoración en el horario que le quede mejor.',
+        boton: 'Reservar por WhatsApp'
+      }
+    };
+  </script>
+  <!-- ===== FIN DE LOS DATOS DEL NEGOCIO ===== -->
+  <!-- Fotos: conexión anticipada y precarga de la foto del hero (se lee de NEGOCIO, no hay que repetir la URL) -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (function (f) {
+      if (!f || !/^https:\/\/images\.unsplash\.com\//.test(f.src)) return;
+      var u = function (w) { return f.src + (f.src.indexOf('?') < 0 ? '?' : '&') + 'auto=format&fit=crop&q=70&w=' + w; };
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = u(960);
+      l.setAttribute('imagesrcset', [640, 960, 1400, 1920].map(function (w) { return u(w) + ' ' + w + 'w'; }).join(', '));
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })(window.NEGOCIO.fotos && window.NEGOCIO.fotos.hero);
+  </script>
+
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#9d4e6a" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="plantilla.css" />
+  <script src="plantilla.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#app">Saltar al contenido</a>
+  <main id="app">
+    <noscript><p style="padding:24px">Aura Estética &amp; Piel (demo). Active JavaScript para ver la página completa.</p></noscript>
+  </main>
+</body>
+</html>
