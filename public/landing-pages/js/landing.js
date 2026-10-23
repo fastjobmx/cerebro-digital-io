@@ -137,20 +137,6 @@ if (gsap && ScrollTrigger && !REDUCED) {
     })
   }
 
-  /* ---------- Contador del precio (Counter de la portada) ---------- */
-  document.querySelectorAll('[data-count]').forEach((el) => {
-    const to = Number(el.dataset.count)
-    const fmt = (v) => '$' + Math.round(v).toLocaleString('es-CO')
-    const o = { v: 0 }
-    el.textContent = fmt(0)
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => gsap.to(o, { v: to, duration: 2.2, ease: EXPO, onUpdate: () => (el.textContent = fmt(o.v)) }),
-    })
-  })
-
   /* ---------- Cierre: las palabras se iluminan con el scroll (FinalCTA) ---------- */
   document.querySelectorAll('[data-manifest]').forEach((el) => {
     gsap.fromTo(el.querySelectorAll('[data-w]'), { opacity: 0.12 }, {

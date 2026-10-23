@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Landing Page para su negocio en Neiva y Colombia | CEREBRO DIGITAL IO</title>
-  <meta name="description" content="Página web de una sola sección para pymes: lista en 48–72 horas, diseñada para celular y conectada a su WhatsApp y Google Maps. $240.000 COP, pago único. Pida su boceto gratis." />
+  <meta name="description" content="Página web para pymes: lista en 48–72 horas, diseñada para celular y conectada a su WhatsApp y Google Maps. Promoción hasta el 31 de octubre: $240.000 COP (US$60), pago único. Precio normal $480.000 COP." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://cerebrodigital.io/landing-pages/" />
   <meta name="theme-color" content="#05010D" />
@@ -17,14 +17,14 @@
   <meta property="og:locale" content="es_CO" />
   <meta property="og:url" content="https://cerebrodigital.io/landing-pages/" />
   <meta property="og:title" content="Su negocio en Google con una página que lleva clientes a su WhatsApp" />
-  <meta property="og:description" content="Landing page lista en 48–72 horas. $240.000 COP, pago único. Pida su boceto gratis por WhatsApp." />
+  <meta property="og:description" content="Landing page lista en 48–72 horas. Promoción hasta el 31 de octubre: $240.000 COP (US$60), pago único. Precio normal $480.000 COP." />
   <meta property="og:image" content="https://cerebrodigital.io/brand/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="CEREBRO DIGITAL IO — Landing pages de alta conversión" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Su negocio en Google con una página que lleva clientes a su WhatsApp" />
-  <meta name="twitter:description" content="Landing page lista en 48–72 horas. $240.000 COP, pago único." />
+  <meta name="twitter:description" content="Promoción hasta el 31 de octubre: $240.000 COP (US$60), pago único. Precio normal $480.000 COP." />
   <meta name="twitter:image" content="https://cerebrodigital.io/brand/og-image.jpg" />
 
   <!-- Fuentes del sitio, carga no bloqueante (mismo patrón que la portada) -->
@@ -71,7 +71,8 @@
       "@type": "Offer",
       "price": "240000",
       "priceCurrency": "COP",
-      "description": "Pago único. Precio de lanzamiento. No incluye dominio.",
+      "priceValidUntil": "2026-10-31",
+      "description": "Precio de promoción, pago único, válido hasta el 31 de octubre de 2026 (equivale a US$60). Precio normal: 480.000 COP (US$120). No incluye dominio.",
       "availability": "https://schema.org/InStock",
       "url": "https://cerebrodigital.io/landing-pages/"
     }
@@ -511,6 +512,14 @@
     .price-card h3 { margin-top: 20px; font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; }
     .price-big { margin-top: 10px; font: 600 clamp(3rem, 14vw, 4.6rem)/1 'Sora', 'Sora Fallback', sans-serif; letter-spacing: -0.05em; }
     .price-big small { font: 600 0.32em/1 'Inter', 'Inter Fallback', sans-serif; letter-spacing: 0; color: var(--text-2); margin-left: 6px; }
+    .price-old { margin-top: 18px; font-size: 15px; color: var(--text-2); }
+    .price-old del, .price-was { text-decoration-thickness: 2px; text-decoration-color: var(--magenta); }
+    .price-old del { margin-left: 6px; color: rgba(255, 255, 255, 0.6); }
+    .price-usd { margin-top: 8px; font: 600 1.05rem/1.3 'Sora', 'Sora Fallback', sans-serif; color: #fff; }
+    .price-was { margin-right: 8px; font-size: 0.6em; font-weight: 500; color: rgba(255, 255, 255, 0.55); }
+    .price-inline .usd { font-size: 0.55em; font-weight: 500; color: var(--text-2); letter-spacing: 0; }
+    .price-inline small { display: block; margin: 6px 0 0; }
+    .price-note.promo { border-color: rgba(240, 60, 255, 0.4); background: rgba(240, 60, 255, 0.08); color: #f5d0ff; }
     .price-sub { margin-top: 12px; font: 500 11px/1.6 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
     .price-list { text-align: left; margin: 26px 0; display: grid; gap: 12px; }
     .price-list li { display: flex; gap: 12px; font-size: 15px; color: rgba(255, 255, 255, 0.72); }
@@ -707,7 +716,7 @@
           <p class="lead sub h-in" style="--n:1">Una página clara, rápida y pensada para el celular, con sus servicios, su ubicación y un <strong>botón directo a su WhatsApp</strong>. Usted solo responde los mensajes.</p>
           <div class="hero-meta h-in" style="--n:2">
             <span class="badge-time"><span class="live" aria-hidden="true"></span>Lista en 48–72 horas</span>
-            <p class="price-inline">$240.000 COP<small>pago único · lanzamiento</small></p>
+            <p class="price-inline"><del class="price-was"><span class="sr-only">Precio normal: </span>$480.000</del> $240.000 COP <span class="usd">(US$60)</span><small>Pago único · promoción hasta el 31 de octubre</small></p>
           </div>
           <div class="hero-cta h-in" style="--n:3">
             <span class="mag" data-magnetic>
@@ -1061,10 +1070,12 @@
           <h2 class="h-section" id="precio-title" data-split><span class="chrome">Un solo pago,</span> <span class="grad">sin sorpresas.</span></h2>
         </div>
         <div class="panel ring-grad price-card" data-tilt="5" data-reveal="0.08">
-          <span class="ribbon" data-r>Precio de lanzamiento</span>
+          <span class="ribbon" data-r>Promoción · 50% de descuento hasta el 31 de octubre</span>
           <h3 data-r>Landing Page de Alta Conversión</h3>
-          <p class="price-big" data-r><span data-count="240000">$240.000</span><small>COP</small></p>
-          <p class="price-sub" data-r>Pago único · 50% al aprobar · 50% al entregar</p>
+          <p class="price-old" data-r>Precio normal <del><span class="sr-only">antes </span>$480.000 COP (US$120)</del></p>
+          <p class="price-big" data-r>$240.000<small>COP</small></p>
+          <p class="price-usd" data-r>US$60 · pago único</p>
+          <p class="price-sub" data-r>50% al aprobar · 50% al entregar</p>
           <ul class="price-list">
             <li data-r><svg aria-hidden="true"><use href="#i-check"/></svg>Página de 5 a 7 secciones adaptada a celular</li>
             <li data-r><svg aria-hidden="true"><use href="#i-check"/></svg>Botón de WhatsApp con mensaje pre-llenado</li>
@@ -1081,7 +1092,7 @@
             </span>
           </div>
           <p class="price-note" data-r><strong>No incluye dominio</strong> (desde ~$60.000/año). Se lo gestionamos si lo necesita.</p>
-          <p class="price-note" data-r>Precio de lanzamiento válido solo para los primeros clientes.</p>
+          <p class="price-note promo" data-r><strong>Precio de promoción válido hasta el 31 de octubre de 2026.</strong> Desde el 1 de noviembre, el precio normal es $480.000 COP (US$120), pago único.</p>
         </div>
       </div>
     </section>

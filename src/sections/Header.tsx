@@ -79,7 +79,7 @@ export function Header({ home = true }: { home?: boolean }) {
                 return (
                   <a
                     key={l.href}
-                    href={base + l.href}
+                    href={l.href.startsWith('/') ? l.href : base + l.href}
                     className={`relative rounded-full px-4 py-2 text-[13px] font-medium transition-colors duration-300 ${
                       on ? 'text-white' : 'text-white/60 hover:text-white'
                     }`}
@@ -131,7 +131,7 @@ export function Header({ home = true }: { home?: boolean }) {
             <span key={l.href} className="overflow-hidden border-b border-white/10">
               <a
                 data-m
-                href={base + l.href}
+                href={l.href.startsWith('/') ? l.href : base + l.href}
                 onClick={() => setOpen(false)}
                 tabIndex={open ? 0 : -1}
                 className="flex items-baseline justify-between py-5 font-display text-[2.1rem] font-semibold tracking-tight text-white"
