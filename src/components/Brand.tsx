@@ -7,7 +7,7 @@ export function BrandLockup({ compact = false }: { compact?: boolean }) {
       <span className="relative grid h-10 w-[52px] place-items-center sm:h-11 sm:w-[58px]">
         <span className="absolute inset-1 rounded-full bg-violet/30 blur-xl" aria-hidden="true" />
         <img
-          src={SITE.logo.mark}
+          src={SITE.logo.markSmall}
           alt=""
           width={58}
           height={34}

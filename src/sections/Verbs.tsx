@@ -8,8 +8,10 @@ export function Verbs() {
   const root = useRef<HTMLElement>(null)
   const bar = useRef<HTMLDivElement>(null)
   const [i, setI] = useState(0)
+  const [reduced, setReduced] = useState(false)
 
   useEffect(() => {
+    setReduced(REDUCED)
     const el = root.current
     if (!el) return
     const st = ScrollTrigger.create({
@@ -25,12 +27,12 @@ export function Verbs() {
   }, [])
 
   return (
-    <section id="como-funciona" ref={root} data-scene="3" className="relative" style={{ height: REDUCED ? 'auto' : `${VERBS.length * 70 + 40}svh` }}>
-      <div className={`${REDUCED ? '' : 'sticky top-0 h-[100svh]'} flex items-center overflow-hidden pt-16 md:pt-0`}>
+    <section id="como-funciona" ref={root} data-scene="3" className="relative" style={{ height: reduced ? 'auto' : `${VERBS.length * 70 + 40}svh` }}>
+      <div className={`${reduced ? '' : 'sticky top-0 h-[100svh]'} flex items-center overflow-hidden pt-16 md:pt-0`}>
         <div className="container-x grid items-center gap-10 md:grid-cols-12">
           <div className="hidden md:col-span-5 md:block" />
           <div className="md:col-span-7">
-            <p className="eyebrow">Cómo piensa</p>
+            <h2 className="eyebrow">Cómo piensa el Cerebro Digital</h2>
             <div className="mt-6 flex gap-6 sm:mt-8 sm:gap-10">
               {/* Barra de progreso */}
               <div className="relative w-px shrink-0 bg-white/10">
@@ -47,15 +49,17 @@ export function Verbs() {
                           on ? 'translate-x-2 text-white' : past ? 'text-white/25' : 'text-white/[0.12]'
                         }`}
                       >
-                        <span className="w-8 font-mono text-[11px] font-normal tracking-normal text-white/40">0{j + 1}</span>
+                        <span className="w-8 font-mono text-[11px] font-normal tracking-normal text-white/60">0{j + 1}</span>
                         <span className={on ? 'text-grad' : ''}>{v.k}</span>
                       </div>
+                      {/* La tarjeta inferior muestra un verbo a la vez: aquí queda el texto completo. */}
+                      <span className="sr-only">: {v.d}</span>
                     </li>
                   )
                 })}
               </ol>
             </div>
-            <div className="glass mt-8 min-h-[92px] max-w-[520px] rounded-2xl p-5 sm:ml-[66px] sm:p-6">
+            <div aria-hidden="true" className="glass mt-8 min-h-[92px] max-w-[520px] rounded-2xl p-5 sm:ml-[66px] sm:p-6">
               <p key={i} className="animate-[fadeUp_.7s_cubic-bezier(.16,1,.3,1)] text-[15px] leading-relaxed text-white/80 sm:text-base">
                 <span className="mr-2 font-mono text-[11px] uppercase tracking-[0.2em] text-cyan">{VERBS[i].k}</span>
                 {VERBS[i].d}

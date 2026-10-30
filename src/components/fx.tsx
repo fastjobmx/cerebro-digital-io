@@ -212,10 +212,12 @@ export function TiltCard({
 /* ------------------------------------------------------------------ */
 export function Counter({ to, suffix = '', prefix = '', decimals = 0 }: { to: number; suffix?: string; prefix?: string; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const [val, setVal] = useState(REDUCED ? to : 0)
+  // El HTML prerenderizado lleva el valor real; la cuenta desde cero empieza al hidratar.
+  const [val, setVal] = useState(to)
   useEffect(() => {
     const el = ref.current
     if (!el || REDUCED) return
+    setVal(0)
     const o = { v: 0 }
     const st = ScrollTrigger.create({
       trigger: el,
@@ -238,6 +240,13 @@ export function Counter({ to, suffix = '', prefix = '', decimals = 0 }: { to: nu
 /* Cursor personalizado (sólo puntero fino)                            */
 /* ------------------------------------------------------------------ */
 export function Cursor() {
+  // Depende del puntero del visitante: se monta en el cliente para no alterar la hidratación.
+  const [on, setOn] = useState(false)
+  useEffect(() => setOn(!REDUCED && FINE_POINTER), [])
+  return on ? <CursorFx /> : null
+}
+
+function CursorFx() {
   const dot = useRef<HTMLDivElement>(null)
   const ring = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -263,7 +272,6 @@ export function Cursor() {
       document.documentElement.classList.remove('has-cursor')
     }
   }, [])
-  if (REDUCED || !FINE_POINTER) return null
   return (
     <>
       <div

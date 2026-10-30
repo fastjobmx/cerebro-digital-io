@@ -16,7 +16,9 @@ export const SITE = {
   aiEnabled: import.meta.env.VITE_AI_ENABLED === 'true',
   logo: {
     full: '/brand/logo-full.webp',
+    fullSmall: '/brand/logo-full-400.webp',
     mark: '/brand/logo-mark.webp',
+    markSmall: '/brand/logo-mark-116.webp',
     markSquare: '/brand/logo-mark-sq.webp',
     word: '/brand/logo-word.webp',
   },
@@ -130,6 +132,30 @@ export const COMPARE = [
   { k: 'Chatbot', d: 'Responde preguntas, pero no coordina procesos.' },
   { k: 'CRM', d: 'Guarda información, pero no la interpreta.' },
   { k: 'Automatización suelta', d: 'Repite tareas sin entender el contexto.' },
+]
+
+// Respuestas tomadas de la base de conocimiento del chatbot (chat/knowledge.ts).
+export const HOME_FAQS = [
+  {
+    q: '¿Qué es un cerebro digital para empresas?',
+    a: 'Es una capa de inteligencia artificial que instalamos en su empresa. Conoce su negocio, conecta sus herramientas, como CRM, correo, agenda, documentos y mensajería, y ejecuta sólo lo que usted autoriza, con trazabilidad completa.',
+  },
+  {
+    q: '¿En qué se diferencia de un chatbot o de un CRM?',
+    a: 'Un chatbot responde preguntas, pero no coordina procesos. Un CRM guarda información, pero no la interpreta. El Cerebro Digital conoce su empresa, conecta sus herramientas y ejecuta con su aprobación.',
+  },
+  {
+    q: '¿Quién aprueba lo que hace el Cerebro?',
+    a: 'Usted. Define qué puede hacer solo, qué requiere aprobación y qué nunca hace. Las acciones sensibles, como enviar, publicar o modificar datos, pasan por su visto bueno y cada acción queda registrada.',
+  },
+  {
+    q: '¿Cuánto cuesta y cuánto tarda la implementación?',
+    a: 'La inversión depende de cuántas áreas active, qué integraciones necesite y el volumen de su operación. Empezamos con un diagnóstico en el que definimos alcance, plazos e inversión en una propuesta clara. Como referencia, una primera área suele estar operando en pocas semanas.',
+  },
+  {
+    q: '¿Trabajan solo en Colombia?',
+    a: 'Trabajamos de forma remota con empresas de habla hispana, con reuniones por videollamada en cada etapa.',
+  },
 ]
 
 /** Abre el chatbot y, opcionalmente, envía una pregunta. */

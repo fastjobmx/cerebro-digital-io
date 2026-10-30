@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
-import { NAV, askCerebro } from '../config/site'
+import { NAV, SITE, askCerebro } from '../config/site'
 import { BrandLockup } from '../components/Brand'
 import { Magnetic } from '../components/fx'
 
@@ -69,7 +69,7 @@ export function Header({ home = true }: { home?: boolean }) {
               scrolled ? 'glass py-2 pl-3 pr-2 shadow-[0_20px_60px_-30px_rgba(139,92,246,.6)] sm:pl-4' : 'py-1 pl-0 pr-0'
             }`}
           >
-            <a href={home ? '#inicio' : '/'} aria-label="Ir al inicio" className="shrink-0">
+            <a href={home ? '#inicio' : '/'} aria-label={`${SITE.name}, ir al inicio`} className="shrink-0">
               <BrandLockup />
             </a>
 

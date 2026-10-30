@@ -5,6 +5,7 @@ import { ArrowRight, MessageCircle, Mail, Check, Loader2, Phone, AlertTriangle }
 import { SITE, NAV, LEGAL_LINKS, askCerebro } from '../config/site'
 import { sendLead } from '../lib/leads'
 import { SplitText, Reveal, Magnetic, REDUCED } from '../components/fx'
+import { SERVICE_LINKS } from '../services/content'
 
 /* ------------------------------------------------------------------ */
 /* CTA final: el manifiesto se ilumina palabra por palabra al scroll   */
@@ -308,20 +309,31 @@ export function Contact() {
 /* ------------------------------------------------------------------ */
 /* Footer                                                              */
 /* ------------------------------------------------------------------ */
-export function Footer() {
+export function Footer({ home = true }: { home?: boolean }) {
+  const base = home ? '' : '/'
   return (
     <footer data-scene="8" className="relative overflow-hidden border-t border-white/[0.07] pb-10 pt-20">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px] bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,.22),transparent_65%)]" />
       <div className="container-x relative">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <img src={SITE.logo.full} alt={SITE.name} loading="lazy" className="w-[min(78vw,340px)]" />
+          <img src={SITE.logo.fullSmall} alt={SITE.name} width={340} height={319} loading="lazy" className="h-auto w-[min(78vw,340px)]" />
           <div className="md:justify-self-end">
             <nav aria-label="Pie de página" className="flex flex-wrap gap-x-7 gap-y-3">
               {NAV.map((l) => (
+                <a key={l.href} href={l.href.startsWith('/') ? l.href : base + l.href} className="text-sm text-white/60 transition-colors hover:text-white">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <nav aria-label="Servicios" className="mt-4 flex flex-wrap gap-x-7 gap-y-3">
+              {SERVICE_LINKS.map((l) => (
                 <a key={l.href} href={l.href} className="text-sm text-white/60 transition-colors hover:text-white">
                   {l.label}
                 </a>
               ))}
+              <a href="/landing-pages/" className="text-sm text-white/60 transition-colors hover:text-white">
+                Landing pages
+              </a>
             </nav>
             <p className="mt-8 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
               Usted decide. <span className="text-grad">El Cerebro ejecuta.</span>
@@ -330,7 +342,9 @@ export function Footer() {
         </div>
         <div className="hairline mt-16" />
         <div className="mt-6 flex flex-col justify-between gap-4 text-[11px] text-white/40 lg:flex-row lg:items-center">
-          <span className="font-mono uppercase tracking-[0.2em]">© {new Date().getFullYear()} {SITE.name}</span>
+          <span className="font-mono uppercase tracking-[0.2em]" suppressHydrationWarning>
+            © {new Date().getFullYear()} {SITE.name}
+          </span>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2 text-[12.5px]">
             {LEGAL_LINKS.map((l) => (
               <a key={l.href} href={l.href} className="transition-colors hover:text-white">

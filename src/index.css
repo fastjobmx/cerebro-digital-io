@@ -259,6 +259,8 @@ html.is-loading, html.is-loading body { overflow: hidden !important; }
     transition-duration: 0.001ms !important;
   }
   .grain { display: none; }
+  /* Sin animaciones, GSAP no revela estos elementos */
+  [data-h], [data-hud] { opacity: 1 !important; }
 }
 
 /* Sin WebGL: el logo como fondo estático */

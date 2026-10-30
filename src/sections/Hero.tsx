@@ -11,7 +11,11 @@ function LiveNumber() {
     const id = setInterval(() => setN((v) => v + Math.floor(Math.random() * 37 - 12)), 900)
     return () => clearInterval(id)
   }, [])
-  return <span className="tabular">{n.toLocaleString('es-CO')}</span>
+  return (
+    <span className="tabular" suppressHydrationWarning>
+      {n.toLocaleString('es-CO')}
+    </span>
+  )
 }
 
 export function Hero({ ready }: { ready: boolean }) {
@@ -42,13 +46,13 @@ export function Hero({ ready }: { ready: boolean }) {
     <section ref={root} id="inicio" data-scene="0" className="relative flex min-h-[100svh] items-end overflow-hidden pb-28 pt-[44svh] sm:pb-32 md:items-center md:pb-20 md:pt-32">
       <div data-hero-content className="container-x relative z-10">
         <div className="max-w-[980px]">
-          <p data-h className="eyebrow glass rounded-full px-4 py-2 opacity-0">
-            Inteligencia que automatiza.
-          </p>
+          <h1 data-h className="eyebrow glass rounded-2xl px-4 py-2 opacity-0 sm:rounded-full">
+            Cerebro digital para empresas: IA y automatización
+          </h1>
 
           {ready && (
             <SplitText
-              as="h1"
+              as="p"
               immediate
               delay={0.15}
               className="h-display mt-6 text-[clamp(2.7rem,6.3vw,6.1rem)] sm:mt-8"
@@ -59,7 +63,7 @@ export function Hero({ ready }: { ready: boolean }) {
               ]}
             />
           )}
-          {!ready && <h1 className="h-display mt-8 text-[clamp(2.7rem,6.3vw,6.1rem)] opacity-0">Ideas que piensan, soluciones que avanzan.</h1>}
+          {!ready && <p className="h-display mt-6 text-[clamp(2.7rem,6.3vw,6.1rem)] opacity-0 sm:mt-8">Ideas que piensan, soluciones que avanzan.</p>}
 
           <p data-h className="lead mt-6 max-w-[540px] opacity-0 sm:mt-8">
             No vendemos herramientas. Instalamos un <strong className="font-semibold text-white">cerebro digital</strong>: una capa

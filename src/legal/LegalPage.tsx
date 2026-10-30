@@ -13,12 +13,12 @@ function Backdrop() {
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_-10%,rgba(240,60,255,.18),transparent_55%),radial-gradient(ellipse_at_0%_40%,rgba(59,130,246,.14),transparent_55%)]" />
       <div className="absolute inset-0 bg-grid opacity-50 mask-radial" />
-      <img src={SITE.logo.mark} alt="" className="absolute -right-24 top-16 w-[min(70vw,720px)] opacity-[0.07] blur-[2px]" />
+      <img src={SITE.logo.mark} alt="" width={720} height={425} className="absolute -right-24 top-16 h-auto w-[min(70vw,720px)] opacity-[0.07] blur-[2px]" />
     </div>
   )
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Backdrop />
@@ -26,7 +26,7 @@ function Shell({ children }: { children: React.ReactNode }) {
       <Header home={false} />
       <main className="relative z-10">{children}</main>
       <div className="relative z-10">
-        <Footer />
+        <Footer home={false} />
       </div>
       <WhatsAppButton />
       <LazyChatWidget />

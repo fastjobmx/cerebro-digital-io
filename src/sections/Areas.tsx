@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Check, Megaphone, PenLine, Workflow, Globe2, Sparkles } from 'lucide-react'
 import { AREAS, askCerebro } from '../config/site'
 import { SplitText, Reveal, TiltCard } from '../components/fx'
+import { SERVICE_LINKS } from '../services/content'
 
 const ICONS = [Megaphone, PenLine, Workflow, Globe2, Sparkles]
 
@@ -60,7 +61,7 @@ export function Areas() {
             <TiltCard max={6} className="panel ring-grad h-full overflow-hidden !rounded-[28px] p-7 sm:p-10" id="area-panel" role="tabpanel">
               <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-magenta/20 blur-[90px]" />
               <div className="pointer-events-none absolute -bottom-28 -left-10 h-72 w-72 rounded-full bg-electric/20 blur-[90px]" />
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={a.id}
                   initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
@@ -98,6 +99,17 @@ export function Areas() {
               </AnimatePresence>
             </TiltCard>
           </div>
+        </Reveal>
+
+        <Reveal className="mt-10">
+          <nav data-r aria-label="Servicios" className="flex flex-wrap items-center gap-2.5">
+            <span className="mr-2 font-mono text-[11px] uppercase tracking-[0.22em] text-white/60">Conozca cada servicio</span>
+            {SERVICE_LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="chip glass transition-all duration-500 ease-expo hover:-translate-y-0.5 hover:border-cyan/40 hover:text-white">
+                {l.label}
+              </a>
+            ))}
+          </nav>
         </Reveal>
       </div>
     </section>

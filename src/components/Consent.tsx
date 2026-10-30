@@ -71,7 +71,7 @@ export function CookieBanner() {
             <p className="text-[13px] leading-relaxed text-white/70">
               Usamos almacenamiento técnico necesario para que el sitio y el asistente funcionen. No usamos cookies publicitarias.{' '}
               <a href="/cookies/" className="text-white underline underline-offset-2 hover:text-cyan">
-                Más información
+                Política de cookies
               </a>
             </p>
             <div className="flex flex-none gap-2">

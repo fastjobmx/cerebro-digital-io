@@ -20,12 +20,16 @@ const SCRIPT = [
 /** Consola demostrativa: el Cerebro propone, el humano aprueba. */
 function Console() {
   const ref = useRef<HTMLDivElement>(null)
-  const [step, setStep] = useState(REDUCED ? 3 : 0)
+  const [step, setStep] = useState(0)
   const [state, setState] = useState<'idle' | 'sending' | 'done'>('idle')
 
   useEffect(() => {
     const el = ref.current
-    if (!el || REDUCED) return
+    if (!el) return
+    if (REDUCED) {
+      setStep(3)
+      return
+    }
     const timers: number[] = []
     const st = ScrollTrigger.create({
       trigger: el,
@@ -52,7 +56,7 @@ function Console() {
   return (
     <div ref={ref} className="panel ring-grad overflow-hidden !rounded-[28px]">
       <div className="flex items-center gap-3 border-b border-white/[0.08] px-5 py-4">
-        <img src={SITE.logo.markSquare} alt="" className="h-9 w-9 rounded-full bg-ink-3 object-cover ring-1 ring-white/15" />
+        <img src={SITE.logo.markSquare} alt="" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-full bg-ink-3 object-cover ring-1 ring-white/15" />
         <div className="leading-tight">
           <p className="text-sm font-semibold">Su Cerebro Digital</p>
           <p className="flex items-center gap-1.5 text-[11px] text-white/50">

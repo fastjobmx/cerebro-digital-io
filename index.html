@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
   <head>
     <meta charset="UTF-8" />
 
@@ -21,14 +21,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- Primary SEO meta -->
-    <title>Cerebro Digital para Empresas | CEREBRO DIGITAL IO</title>
+    <title>IA y automatización para empresas en Colombia | Cerebro Digital IO</title>
     <meta
       name="description"
-      content="Construimos cerebros digitales para empresas: inteligencia artificial, automatización, integración de sistemas y soluciones digitales configuradas alrededor de su negocio."
-    />
-    <meta
-      name="keywords"
-      content="Cerebro Digital, Inteligencia Artificial para empresas, Automatización empresarial, IA para negocios, Automatización de procesos, Transformación digital, Agentes de IA, Integración de sistemas, IA para empresas en Colombia"
+      content="Instalamos un cerebro digital en su empresa: una capa de IA que conoce su negocio, conecta CRM, correo y agenda, y ejecuta sólo lo que usted autoriza."
     />
     <meta name="author" content="CEREBRO DIGITAL IO" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -36,10 +32,10 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cerebro Digital para Empresas | CEREBRO DIGITAL IO" />
-    <meta property="og:description" content="Construimos cerebros digitales para empresas: inteligencia artificial, automatización, integración de sistemas y soluciones digitales configuradas alrededor de su negocio." />
+    <meta property="og:title" content="IA y automatización para empresas en Colombia | Cerebro Digital IO" />
+    <meta property="og:description" content="Una capa de IA que conoce su negocio, conecta sus herramientas y ejecuta sólo lo que usted autoriza." />
     <meta property="og:site_name" content="CEREBRO DIGITAL IO" />
-    <meta property="og:locale" content="es_LA" />
+    <meta property="og:locale" content="es_CO" />
     <meta property="og:url" content="https://cerebrodigitalio.qd.je/" />
     <meta property="og:image" content="https://cerebrodigitalio.qd.je/brand/og-image.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -49,7 +45,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cerebro Digital para Empresas | CEREBRO DIGITAL IO" />
+    <meta name="twitter:title" content="IA y automatización para empresas en Colombia | Cerebro Digital IO" />
     <meta name="twitter:description" content="Inteligencia que automatiza. Un cerebro digital para su negocio. Usted decide. El Cerebro ejecuta." />
     <meta name="twitter:image" content="https://cerebrodigitalio.qd.je/brand/og-image.jpg" />
     <meta name="twitter:image:alt" content="CEREBRO DIGITAL IO — Inteligencia que automatiza" />
@@ -84,7 +80,18 @@
             "@id": "https://cerebrodigitalio.qd.je/#website",
             "url": "https://cerebrodigitalio.qd.je/",
             "name": "CEREBRO DIGITAL IO",
-            "inLanguage": "es",
+            "inLanguage": "es-CO",
+            "publisher": { "@id": "https://cerebrodigitalio.qd.je/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://cerebrodigitalio.qd.je/#webpage",
+            "url": "https://cerebrodigitalio.qd.je/",
+            "name": "IA y automatización para empresas en Colombia | Cerebro Digital IO",
+            "description": "Instalamos un cerebro digital en su empresa: una capa de IA que conoce su negocio, conecta CRM, correo y agenda, y ejecuta sólo lo que usted autoriza.",
+            "inLanguage": "es-CO",
+            "isPartOf": { "@id": "https://cerebrodigitalio.qd.je/#website" },
+            "about": { "@id": "https://cerebrodigitalio.qd.je/#service" },
             "publisher": { "@id": "https://cerebrodigitalio.qd.je/#organization" }
           },
           {
@@ -94,8 +101,7 @@
             "serviceType": "Inteligencia artificial y automatización empresarial",
             "description": "Una capa de inteligencia artificial que conoce su empresa, conecta sus herramientas (CRM, correo, agenda, documentos, mensajería) y ejecuta sólo los procesos que usted autoriza.",
             "provider": { "@id": "https://cerebrodigitalio.qd.je/#organization" },
-            "areaServed": { "@type": "Country", "name": "Colombia" },
-            "availableLanguage": "es"
+            "areaServed": { "@type": "Country", "name": "Colombia" }
           }
         ]
       }
@@ -104,7 +110,6 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="/brand/logo-full.webp" type="image/webp">
     <!-- Carga no bloqueante: texto visible inmediato con fuente del sistema, swap al llegar -->
     <!-- Inter/Sora: display=swap (texto legible siempre). Michroma/JetBrains Mono: display=optional (solo si carga rápido, evita FOIT en decorativas) -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -113,7 +118,33 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=JetBrains+Mono:wght@400;500&display=optional">
     </noscript>
-    <script src="/oculta-insignia.js"></script>
+    <!-- Sin JavaScript no corren las animaciones que revelan la portada -->
+    <noscript><style>#inicio .opacity-0, [data-h] { opacity: 1 !important; }</style></noscript>
+    <!-- Primera visita: fondo y logo tenue pintados antes del JavaScript; el preloader los reemplaza al montarse -->
+    <style>
+      html.is-preload::before, html.is-preload::after { content: ''; position: fixed; inset: 0; z-index: 199; }
+      html.is-preload::before { background: #05010d; }
+      html.is-preload::after { background: url('/brand/logo-full.webp') center / min(72vw, 380px) no-repeat; opacity: 0.16; }
+    </style>
+    <script>
+      try {
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('cdio-visited')) {
+          var html = document.documentElement
+          html.classList.add('is-preload', 'is-loading')
+          var logo = document.createElement('link')
+          logo.rel = 'preload'
+          logo.as = 'image'
+          logo.href = '/brand/logo-full.webp'
+          logo.fetchPriority = 'high'
+          document.head.appendChild(logo)
+          // Si el JavaScript no llega a cargar, la página no queda cubierta.
+          setTimeout(function () {
+            html.classList.remove('is-preload', 'is-loading')
+          }, 10000)
+        }
+      } catch (e) {}
+    </script>
+    <script src="/oculta-insignia.js" defer></script>
   </head>
   <body>
     <div id="app"></div>

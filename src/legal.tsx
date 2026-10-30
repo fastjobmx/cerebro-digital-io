@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
 import './index.css'
 import { DOCS } from './legal/content'
 import { LegalPage, NotFound } from './legal/LegalPage'
+import { mount } from './lib/mount'
+import { ServicePage } from './services/ServicePage'
+import { SERVICE_BY_PAGE } from './services/content'
 
-// Punto de entrada ligero (sin three.js) para páginas legales y 404.
+// Punto de entrada ligero (sin three.js) para páginas de servicio, legales y 404.
 // Cada HTML indica su página con <div id="app" data-page="...">.
 const root = document.getElementById('app')!
-const page = root.dataset.page as keyof typeof DOCS | '404'
+const page = root.dataset.page ?? '404'
+const service = SERVICE_BY_PAGE[page]
 
-ReactDOM.createRoot(root).render(
-  <React.StrictMode>{page === '404' || !(page in DOCS) ? <NotFound /> : <LegalPage doc={DOCS[page]} />}</React.StrictMode>,
-)
+mount(root, service ? <ServicePage doc={service} /> : page in DOCS ? <LegalPage doc={DOCS[page as keyof typeof DOCS]} /> : <NotFound />)

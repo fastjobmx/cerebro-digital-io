@@ -1,4 +1,5 @@
 import { SITE } from '../config/site'
+import { trackEvent } from './analytics'
 
 /**
  * Envío de solicitudes (formulario y chatbot) al correo de la empresa vía FormSubmit.
@@ -67,7 +68,9 @@ export async function sendLead(data: LeadPayload, origen: 'formulario' | 'chatbo
       body: JSON.stringify(body),
     })
     const json = (await res.json().catch(() => ({}))) as { success?: string | boolean }
-    return res.ok && String(json.success) !== 'false'
+    const ok = res.ok && String(json.success) !== 'false'
+    if (ok) trackEvent('generate_lead', { origen })
+    return ok
   } catch {
     return false
   }

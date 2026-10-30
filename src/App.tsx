@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Cursor } from './components/fx'
 import { ErrorBoundary } from './components/ErrorBoundary'
@@ -12,6 +12,7 @@ import { Areas } from './sections/Areas'
 import { Control } from './sections/Control'
 import { Difference, Cases } from './sections/Difference'
 import { Process, Results } from './sections/Process'
+import { Faq } from './sections/Faq'
 import { FinalCTA, Contact, Footer } from './sections/Closing'
 import { LazyChatWidget } from './chat/LazyChatWidget'
 import { CookieBanner, WhatsAppButton } from './components/Consent'
@@ -19,24 +20,44 @@ import { CookieBanner, WhatsAppButton } from './components/Consent'
 // La escena 3D (three.js) se carga en un chunk aparte para pintar el contenido antes
 const NeuralScene = lazy(() => import('./three/NeuralScene').then((m) => ({ default: m.NeuralScene })))
 
+// La decisión se toma una sola vez: StrictMode repite los efectos en desarrollo.
+let preloadDecision: boolean | undefined
+
 function shouldPreload() {
+  if (preloadDecision !== undefined) return preloadDecision
+  preloadDecision = true
   try {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
-    if (sessionStorage.getItem('cdio-visited')) return false
-    sessionStorage.setItem('cdio-visited', '1')
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) preloadDecision = false
+    else if (sessionStorage.getItem('cdio-visited')) preloadDecision = false
+    else sessionStorage.setItem('cdio-visited', '1')
   } catch {
     /* almacenamiento no disponible */
   }
-  return true
+  return preloadDecision
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(shouldPreload)
+  // El HTML prerenderizado equivale a "cargando, sin preloader": el navegador lo hidrata igual
+  // y después se decide si corre el preloader. El script del <head> cubre ese instante.
+  const [loading, setLoading] = useState(true)
+  const [preload, setPreload] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const done = useCallback(() => setLoading(false), [])
+
+  useLayoutEffect(() => {
+    setMounted(true)
+    if (shouldPreload()) setPreload(true)
+    else setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    if (preload) document.documentElement.classList.remove('is-preload')
+  }, [preload])
 
   useEffect(() => {
     document.documentElement.classList.toggle('is-loading', loading)
     if (!loading) {
+      document.documentElement.classList.remove('is-preload')
       // Delay refresh to ensure layout is stable after preloader hides
       const timer = setTimeout(() => ScrollTrigger.refresh(), 150)
       return () => clearTimeout(timer)
@@ -52,12 +73,14 @@ export default function App() {
 
   return (
     <>
-      {loading && <Preloader onDone={done} />}
-      <ErrorBoundary>
-        <Suspense fallback={null}>
-          <NeuralScene />
-        </Suspense>
-      </ErrorBoundary>
+      {preload && loading && <Preloader onDone={done} />}
+      {mounted && (
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <NeuralScene />
+          </Suspense>
+        </ErrorBoundary>
+      )}
       {/* Viñeta y atmósfera sobre la escena 3D */}
       <div
         aria-hidden="true"
@@ -78,6 +101,7 @@ export default function App() {
         <Cases />
         <Process />
         <Results />
+        <Faq />
         <FinalCTA />
         <Contact />
       </main>

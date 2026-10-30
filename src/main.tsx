@@ -1,16 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { LenisSmoothScroll } from './components/LenisSmoothScroll'
 import { validateEnv } from './lib/env'
+import { mount } from './lib/mount'
 
 validateEnv()
 
-ReactDOM.createRoot(document.getElementById('app')!).render(
-  <React.StrictMode>
-    <LenisSmoothScroll>
-      <App />
-    </LenisSmoothScroll>
-  </React.StrictMode>,
+mount(
+  document.getElementById('app')!,
+  <LenisSmoothScroll>
+    <App />
+  </LenisSmoothScroll>,
 )

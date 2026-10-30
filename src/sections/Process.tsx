@@ -80,6 +80,7 @@ export function Results() {
   return (
     <section data-scene="4" className="relative py-20 sm:py-28">
       <div className="container-x">
+        <h2 className="sr-only">El Cerebro Digital en números</h2>
         <Reveal className="grid overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.02] backdrop-blur-xl sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
           {STATS.map((s, i) => (
             <div
