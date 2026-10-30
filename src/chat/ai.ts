@@ -65,10 +65,13 @@ export async function* streamChat(messages: AIMessage[], signal?: AbortSignal): 
         received = true
         window.clearTimeout(timer)
       }
-      yield chunk
+      // Basic sanitization: strip HTML tags to prevent XSS from compromised backend
+      const clean = chunk.replace(/<[^>]*>/g, '')
+      if (clean) yield clean
     }
     const tail = decoder.decode()
-    if (tail) yield tail
+    const cleanTail = tail.replace(/<[^>]*>/g, '')
+    if (cleanTail) yield cleanTail
     if (!received) throw new Error('Respuesta vacía')
   } finally {
     window.clearTimeout(timer)

@@ -1,6 +1,7 @@
 import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Cursor } from './components/fx'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { Preloader } from './sections/Preloader'
 import { Header } from './sections/Header'
 import { Hero } from './sections/Hero'
@@ -35,19 +36,28 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('is-loading', loading)
-    if (!loading) requestAnimationFrame(() => ScrollTrigger.refresh())
+    if (!loading) {
+      // Delay refresh to ensure layout is stable after preloader hides
+      const timer = setTimeout(() => ScrollTrigger.refresh(), 150)
+      return () => clearTimeout(timer)
+    }
   }, [loading])
 
   useEffect(() => {
-    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+    document.fonts?.ready.then(() => {
+      // Double-check after fonts load; some layouts shift on font swap
+      setTimeout(() => ScrollTrigger.refresh(), 100)
+    })
   }, [])
 
   return (
     <>
       {loading && <Preloader onDone={done} />}
-      <Suspense fallback={null}>
-        <NeuralScene />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={null}>
+          <NeuralScene />
+        </Suspense>
+      </ErrorBoundary>
       {/* Viñeta y atmósfera sobre la escena 3D */}
       <div
         aria-hidden="true"
@@ -76,7 +86,9 @@ export default function App() {
       </div>
 
       <WhatsAppButton />
-      <LazyChatWidget />
+      <ErrorBoundary>
+        <LazyChatWidget />
+      </ErrorBoundary>
       <CookieBanner />
     </>
   )

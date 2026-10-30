@@ -105,9 +105,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="/brand/logo-full.webp" type="image/webp">
-    <!-- Carga no bloqueante: el texto se pinta con la fuente del sistema y cambia al llegar (display=swap) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&family=Michroma&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&family=Michroma&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+    <!-- Carga no bloqueante: texto visible inmediato con fuente del sistema, swap al llegar -->
+    <!-- Inter/Sora: display=swap (texto legible siempre). Michroma/JetBrains Mono: display=optional (solo si carga rápido, evita FOIT en decorativas) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Michroma&family=JetBrains+Mono:wght@400;500&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=JetBrains+Mono:wght@400;500&display=optional">
+    </noscript>
     <script src="/oculta-insignia.js"></script>
   </head>
   <body>

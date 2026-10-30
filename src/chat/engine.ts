@@ -2,7 +2,7 @@
 // Funciona 100 % en el navegador; el modo IA (ai.ts) lo usa como respaldo.
 import { sendLead } from '../lib/leads'
 import { SITE } from '../config/site'
-import { DEFAULT_REPLIES, FALLBACK_SUGGESTIONS, INTENTS, INTENT_BY_ID, type Intent } from './knowledge'
+import { DEFAULT_REPLIES, FALLBACK_SUGGESTIONS, INTENTS, INTENT_BY_ID, STOPWORDS, type Intent } from './knowledge'
 
 /* ───────────────────────────── Tipos ───────────────────────────── */
 
@@ -53,16 +53,7 @@ export interface EngineResult {
 
 /* ───────────────────────────── Normalización ───────────────────────────── */
 
-const STOPWORDS = new Set(
-  (
-    'a al algo algun alguna algunas alguno algunos ante antes asi aun cada como con contra cual cuales cuando cuanto cuanta ' +
-    'de del desde donde durante e el ella ellas ellos en entre era es esa esas ese eso esos esta estas este esto estos esta estan estoy ' +
-    'fue ha han hay haber hace hacen hacer la las le les lo los me mi mis mucho muy mas ni nos nosotros o os otra otro para pero ' +
-    'poco por porque puede pueden puedo pudiera que quien quiero quisiera se sea ser seria si sin sobre su sus tal tambien te tengo ' +
-    'tiene tienen ti tu tus un una uno unos unas usted ustedes y ya yo favor porfa podria podrian saber decir cerebro digital io ' +
-    'empresa empresas negocio negocios compania hola'
-  ).split(' '),
-)
+// STOPWORDS imported from knowledge.ts for centralized maintenance
 // "hola" es stopword para el puntaje por tokens, pero sigue detectándose como frase/keyword
 // gracias a que las keywords se comparan con la lista completa de tokens (ver scoreIntent).
 

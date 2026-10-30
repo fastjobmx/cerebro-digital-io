@@ -17,13 +17,7 @@ export default {
         electric: '#3B82F6',
         cyan: '#3DD9FF',
         chrome: '#E9E6FF',
-        // Alias heredados
-        'ultra-violet': '#7B2CFF',
-        'electric-purple': '#A855F7',
-        'neon-magenta': '#F03CFF',
-        'electric-cyan': '#3DD9FF',
-        'deep-space': '#05010D',
-      },
+              },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Sora', 'Inter', 'sans-serif'],

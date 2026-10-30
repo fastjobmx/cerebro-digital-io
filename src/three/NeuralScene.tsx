@@ -520,12 +520,14 @@ export function NeuralScene() {
     document.addEventListener('visibilitychange', onVis)
 
     return () => {
+      // Guard against race conditions with visibility change handler
       running = false
       cancelAnimationFrame(raf)
       io.disconnect()
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('resize', onResize)
       document.removeEventListener('visibilitychange', onVis)
+      // Dispose all GPU resources to prevent memory leaks
       geo.dispose()
       mat.dispose()
       lineGeo.dispose()
@@ -535,6 +537,10 @@ export function NeuralScene() {
       dustGeo.dispose()
       dustMat.dispose()
       composer?.dispose()
+      // Force context loss before removing canvas to free WebGL resources
+      const gl = renderer.getContext()
+      const ext = gl.getExtension('WEBGL_lose_context')
+      ext?.loseContext()
       renderer.dispose()
       renderer.domElement.remove()
     }

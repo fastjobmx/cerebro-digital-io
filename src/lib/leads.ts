@@ -20,7 +20,18 @@ const LABELS: Record<string, string> = {
   mensaje: 'Mensaje',
 }
 
+// Rate limiting: prevent spam flooding (max 1 lead per 30 seconds per session)
+let lastLeadTime = 0
+const MIN_LEAD_INTERVAL_MS = 30_000
+
 export async function sendLead(data: LeadPayload, origen: 'formulario' | 'chatbot'): Promise<boolean> {
+  const now = Date.now()
+  if (now - lastLeadTime < MIN_LEAD_INTERVAL_MS) {
+    console.debug('[cerebro] lead throttled; too soon since last submission')
+    return false
+  }
+  lastLeadTime = now
+
   const fecha = new Date().toISOString()
   const record = { ...data, origen, fecha, pagina: location.href }
 
@@ -28,7 +39,10 @@ export async function sendLead(data: LeadPayload, origen: 'formulario' | 'chatbo
     const raw = localStorage.getItem('cerebro-leads')
     const parsed: unknown = raw ? JSON.parse(raw) : []
     const list = Array.isArray(parsed) ? parsed : []
-    localStorage.setItem('cerebro-leads', JSON.stringify([...list, record]))
+    // Cap at 100 entries to prevent localStorage overflow (~5MB limit)
+    const MAX_LEADS = 100
+    const trimmed = list.length >= MAX_LEADS ? list.slice(list.length - MAX_LEADS + 1) : list
+    localStorage.setItem('cerebro-leads', JSON.stringify([...trimmed, record]))
   } catch {
     /* almacenamiento no disponible */
   }
