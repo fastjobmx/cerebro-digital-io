@@ -224,7 +224,7 @@
   pie.innerHTML = '<div class="wrap"><p><strong>' + esc(N.nombre) + '</strong> · ' + esc(N.direccion) + '</p>' +
     (N.esDemo
       ? '<p>Negocio ficticio. Página de demostración creada por <a href="/landing-pages/">Cerebro Digital IO</a>. Los nombres, precios y datos son ilustrativos.</p>'
-      : '<p>© ' + new Date().getFullYear() + ' ' + esc(N.nombre) + '. Página creada por <a href="https://cerebrodigital.qzz.io/landing-pages/">Cerebro Digital IO</a>.</p>') +
+      : '<p>© ' + new Date().getFullYear() + ' ' + esc(N.nombre) + '. Página creada por <a href="https://cerebrodigitalio.qd.je/landing-pages/">Cerebro Digital IO</a>.</p>') +
     (JSON.stringify(F).indexOf('images.unsplash.com') >= 0 ? '<p>Fotos: <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a>.</p>' : '') +
     '</div>';
   document.body.appendChild(pie);

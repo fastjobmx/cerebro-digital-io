@@ -3,7 +3,7 @@ export const SITE = {
   name: 'CEREBRO DIGITAL IO',
   tagline: 'Inteligencia que automatiza.',
   motto: 'Usted decide. El Cerebro ejecuta.',
-  url: 'https://cerebrodigital.qzz.io',
+  url: 'https://cerebrodigitalio.qd.je',
   // Número en formato internacional sin "+" ni espacios (ej. 573001234567).
   whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '573022323472',
   whatsappDisplay: '+57 302 232 3472',

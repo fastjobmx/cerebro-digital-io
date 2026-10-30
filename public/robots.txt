@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cerebrodigital.qzz.io/sitemap.xml
+Sitemap: https://cerebrodigitalio.qd.je/sitemap.xml
